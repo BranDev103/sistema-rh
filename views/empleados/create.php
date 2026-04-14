@@ -58,7 +58,7 @@ verificarSesion();
 
                 <div class="form-group">
                     <label>Edad</label>
-                    <input type="number" name="edad" id="edad" readonly disabled>
+                    <input type="number" name="edad" id="edad" required>
                 </div>
 
                 <div class="form-group">
@@ -242,7 +242,7 @@ verificarSesion();
                 </div>
 
                 <div class="form-group">
-                    <label>Estado</label>
+                    <label>Estado de Residencia</label>
                     <select name="estado" required>
                         <option value="">Seleccione</option>
                         <option value="Aguascalientes">Aguascalientes</option>

@@ -165,15 +165,42 @@ class Empleado
         return $stmt->execute();
     }
 
-    public static function getUltimoFolio() {
-    global $conn;
+    public static function getUltimoFolio()
+    {
+        global $conn;
 
-    $result = $conn->query("SELECT folio FROM empleados ORDER BY id DESC LIMIT 1");
+        $result = $conn->query("SELECT folio FROM empleados ORDER BY id DESC LIMIT 1");
 
-    if ($row = $result->fetch_assoc()) {
-        return $row['folio'];
+        if ($row = $result->fetch_assoc()) {
+            return $row['folio'];
+        }
+
+        return null;
     }
 
-    return null;
+
+    public static function contarActivos() {
+    global $conn;
+
+    $result = $conn->query("SELECT COUNT(*) AS total FROM empleados");
+
+    $row = $result->fetch_assoc();
+
+    return $row['total'];
 }
+
+    public static function getFolios()
+    {
+        global $conn;
+
+        $result = $conn->query("SELECT folio FROM empleados");
+
+        $folios = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $folios[] = $row['folio'];
+        }
+
+        return $folios;
+    }
 }

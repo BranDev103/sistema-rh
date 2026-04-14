@@ -11,9 +11,9 @@ class EmpleadoController
 
     public static function store()
     {
-          $ultimo = Empleado::getUltimoFolio();
-                $folio =generarFolio($ultimo);
-        
+        $total = Empleado::contarActivos();
+        $folio = generarFolio($total);
+
         $salario_letra = numeroALetras($_POST['sdi']);
 
         $data = [
@@ -197,7 +197,6 @@ class EmpleadoController
         readfile($ruta);
         exit;
     }
-
 }
 
 
