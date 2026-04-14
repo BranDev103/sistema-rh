@@ -228,9 +228,9 @@ tbody tr:nth-child(even) {
 }
 
 .paginacion a {
- 
   padding: 7px 10px;
   text-decoration: none;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
   color: rgb(0, 102, 255);
   border-radius: 5px;
 }
