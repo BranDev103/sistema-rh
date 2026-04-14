@@ -8,8 +8,22 @@ verificarSesion();
 
 
 $empleados = Empleado::getAll();
+
+$limite = 10;
+
+$pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+
+if ($pagina < 1) $pagina = 1;
+
+$offset = ($pagina - 1) * $limite;
+
+$empleados = Empleado::getPaginado($limite, $offset);
+$total = Empleado::contarTotal();
+
+$totalPaginas = ceil($total / $limite);
 ?>
 <?php include("../layouts/header.php"); ?>
+
 
 
 
@@ -68,8 +82,8 @@ $empleados = Empleado::getAll();
                         </div>
                         <div class="icon">
                             <?php if (esAdmin()): ?>
-                            <a class="icono bi bi-trash" href="../../controllers/empleadoController.php?action=delete&id=<?= $row['id'] ?>" " onclick=" return confirm('¿Eliminar este registro?')"></a>
-                            <span class="tooltip">Eliminar</span>
+                                <a class="icono bi bi-trash" href="../../controllers/empleadoController.php?action=delete&id=<?= $row['id'] ?>" " onclick=" return confirm('¿Eliminar este registro?')"></a>
+                                <span class="tooltip">Eliminar</span>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -79,3 +93,22 @@ $empleados = Empleado::getAll();
         <?php endwhile; ?>
     </tbody>
 </table>
+
+<div class="paginacion" style="margin-top:20px; Text-align: center;">
+
+    <?php if ($pagina > 1): ?>
+        <a class="bi bi-arrow-left" href="?pagina=<?= $pagina - 1 ?>"></a>
+    <?php endif; ?>
+
+    <?php for ($i = 1; $i <= $totalPaginas; $i++): ?>
+        <a href="?pagina=<?= $i ?>"
+            style="<?= $i == $pagina ? 'font-weight:bolder; text-decoration: none;' : '' ?>">
+            <?= $i ?>
+        </a>
+    <?php endfor; ?>
+
+    <?php if ($pagina < $totalPaginas): ?>
+        <a class="bi bi-arrow-right" href="?pagina=<?= $pagina + 1 ?>"></a>
+    <?php endif; ?>
+
+</div>

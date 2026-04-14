@@ -179,28 +179,54 @@ class Empleado
     }
 
 
-    public static function contarActivos() {
-    global $conn;
-
-    $result = $conn->query("SELECT COUNT(*) AS total FROM empleados");
-
-    $row = $result->fetch_assoc();
-
-    return $row['total'];
-}
-
-    public static function getFolios()
+    public static function contarActivos()
     {
         global $conn;
 
-        $result = $conn->query("SELECT folio FROM empleados");
+        $result = $conn->query("SELECT COUNT(*) AS total FROM empleados");
 
-        $folios = [];
+        $row = $result->fetch_assoc();
 
-        while ($row = $result->fetch_assoc()) {
-            $folios[] = $row['folio'];
-        }
+        return $row['total'];
+    }
 
-        return $folios;
+
+    public static function getCompanias()
+    {
+        global $conn;
+
+        $result = $conn->query("SELECT DISTINCT compania FROM empleados ORDER BY compania ASC");
+
+        return $result;
+    }
+
+    public static function getObras()
+    {
+        global $conn;
+
+        $result = $conn->query("SELECT DISTINCT nombre_obra FROM empleados ORDER BY nombre_obra ASC");
+
+        return $result;
+    }
+
+    public static function getPaginado($limite, $offset)
+    {
+        global $conn;
+
+        $stmt = $conn->prepare("SELECT * FROM empleados LIMIT ? OFFSET ?");
+        $stmt->bind_param("ii", $limite, $offset);
+        $stmt->execute();
+
+        return $stmt->get_result();
+    }
+
+    public static function contarTotal()
+    {
+        global $conn;
+
+        $result = $conn->query("SELECT COUNT(*) AS total FROM empleados");
+        $row = $result->fetch_assoc();
+
+        return $row['total'];
     }
 }
