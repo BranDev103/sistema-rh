@@ -46,3 +46,16 @@ function formatearFechaContrato($fecha) {
 
     return $dia . ' de ' . $meses[$mes] . ' del ' . $anio;
 }
+
+function generarFolio($ultimoFolio) {
+
+    if (!$ultimoFolio) {
+        return "1";
+    }
+
+    $numero = intval(substr($ultimoFolio, 2));
+    $numero++;
+
+    return str_pad($numero, 2, "0", STR_PAD_LEFT);
+    
+}

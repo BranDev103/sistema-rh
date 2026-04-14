@@ -13,7 +13,7 @@ function generarContrato($empleado)
     //Nombre del archivo (limpio)
     $nombreLimpio = 'Contrato - ' . $empleado['nombre'];
 
-    $outputPath = __DIR__ . '/../uploads/contratos/contrato-' . $nombreLimpio . '.docx';
+    $outputPath = __DIR__ . '/../uploads/contratos/' . $nombreLimpio . '.docx';
 
     //Crear instancia
     $template = new TemplateProcessor($templatePath);

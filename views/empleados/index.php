@@ -39,7 +39,7 @@ $empleados = Empleado::getAll();
     <tbody>
         <?php while ($row = $empleados->fetch_assoc()): ?>
             <tr>
-                <td><?= $row['id'] ?></td>
+                <td><?= $row['folio'] ?></td>
                 <td><?= $row['compania'] ?></td>
                 <td><?= strtoupper($row['nombre']) ?></td>
                 <td><?= $row['puesto'] ?></td>

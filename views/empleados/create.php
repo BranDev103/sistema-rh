@@ -20,7 +20,7 @@ verificarSesion();
     <?php include '../layouts/header.php'; ?>
     <div class="main-content">
         <div class="container">
-            <h2>REGISTRO DE TRABAJADORES</h2>
+            <h2>REGISTRAR TRABAJADOR</h2>
 
             <form id="formulario" action="../../controllers/empleadoController.php" method="POST">
 

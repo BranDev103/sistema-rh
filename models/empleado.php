@@ -37,8 +37,8 @@ class Empleado
             estado_civil, estado_nacimiento,
             rfc, nss,
             calle, num_exterior, colonia, municipio, estado, cp,
-            fecha_ingreso, nombre_obra, pago
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            fecha_ingreso, nombre_obra, pago, folio
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         $stmt = $conn->prepare($sql);
 
@@ -47,7 +47,7 @@ class Empleado
         }
 
         $stmt->bind_param(
-            "ssssssddsssissssssssssssss",
+            "ssssssddsssisssssssssssssss",
             $data['compania'],
             $data['nombre'],
             $data['puesto'],
@@ -73,7 +73,8 @@ class Empleado
             $data['cp'],
             $data['fecha_ingreso'],
             $data['nombre_obra'],
-            $data['pago']
+            $data['pago'],
+            $data['folio']
         );
 
         if (!$stmt->execute()) {
@@ -163,4 +164,16 @@ class Empleado
 
         return $stmt->execute();
     }
+
+    public static function getUltimoFolio() {
+    global $conn;
+
+    $result = $conn->query("SELECT folio FROM empleados ORDER BY id DESC LIMIT 1");
+
+    if ($row = $result->fetch_assoc()) {
+        return $row['folio'];
+    }
+
+    return null;
+}
 }
