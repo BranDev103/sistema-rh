@@ -27,7 +27,7 @@ $empleados = Empleado::getAll();
         <script src="../../public/js/buscar.js"></script>
     </div>
 
-    <table id="tablaEmpleados" class="display">
+    <table id="tablaEmpleados" class="display" style="width:98%">
         <thead>
             <tr>
                 <th>No.</th>
@@ -39,8 +39,9 @@ $empleados = Empleado::getAll();
                 <th>SDI</th>
                 <th>Estado Civil</th>
                 <th>Obra</th>
-                <th>Contrato</th>
+                <th>Fecha Ingreso</th>
                 <th>Acciones</th>
+
             </tr>
         </thead>
         <tbody>
@@ -59,15 +60,7 @@ $empleados = Empleado::getAll();
                             ? substr($row['nombre_obra'], 0, 30) . '...'
                             : $row['nombre_obra'] ?>
                     </td>
-                    <!--
                     <td><?= date("d/M/Y", strtotime($row['fecha_ingreso'])) ?>
-                    </td> -->
-                    <td>
-                        <?php if (!empty($row['contrato_path'])): ?>
-                            <a class="descarga bi bi-arrow-down-circle" href="../../controllers/EmpleadoController.php?action=descargarContrato&id=<?= $row['id'] ?>"> Descargar</a>
-                            <?php else: ?>No disponible
-                        <?php endif; ?>
-
                     </td>
 
                     <td>
@@ -105,34 +98,30 @@ $empleados = Empleado::getAll();
         $(document).ready(function() {
 
             var table = $('#tablaEmpleados').DataTable({
-                pageLength: 30,
+                pageLength: 15,
                 searching: false,
+                pagingType: "simple_numbers",
                 scrollX: false,
                 autoWidth: false,
                 dom: 'tip',
                 ordering: true,
                 language: {
                     info: "",
-                    paginate: {
-                        previous: "Anterior",
-                        next: "Siguiente"
-                    },
                     zeroRecords: "No se encontraron resultados",
-                    infoEmpty: ""
+                    infoEmpty: "",
+                    paginate: {
+                        previous: "<<",
+                        next: ">>"
+                    }
                 },
                 columnDefs: [{
-                        orderable: false,
-                        targets: 0
-                    } // columna #
-                ],
+                    orderable: false,
+                    targets: 0
+                }],
                 order: [
                     [1, 'asc']
                 ],
                 select: true,
-            });
-
-            $('#tablaEmpleados tbody').on('click', 'tr', function() {
-                $(this).toggleClass('selected');
             });
 
             table.on('order.dt search.dt draw.dt', function() {

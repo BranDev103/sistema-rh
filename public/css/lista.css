@@ -133,6 +133,7 @@ th {
 td {
   border: 1px solid rgb(0, 0, 0);
   font-size: 0.8em;
+  cursor:default;
 }
 
 tbody td {
@@ -223,8 +224,8 @@ tbody tr:nth-child(even) {
 
 /****************************************************************************/
 
-tr.selected {
-    background-color: #b3d6ff9c !important;
+td.selected-cell {
+    background-color: #b3d7ff !important;
 }
 
 .descarga{

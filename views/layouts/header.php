@@ -21,7 +21,7 @@
         <nav>
             <a href="../empleados/index.php">HOME</a>
             <a href="../contratos/index.php">CONTRATOS</a>
-            <a href="">BAJAS</a>
+            <a href="../empleados/bajas.php">BAJAS</a>
             <a href="/sistema_rh/logout.php" onclick="return confirm('¿Deseas Cerrar Sesión?')">CERRAR SESIÓN</a>
         </nav>
     </header>

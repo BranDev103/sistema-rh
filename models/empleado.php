@@ -149,7 +149,12 @@ class Empleado
     {
         global $conn;
 
-        $stmt = $conn->prepare("UPDATE empleados SET estatus='inactivo' WHERE id=?");
+        $stmt = $conn->prepare("
+        UPDATE empleados 
+        SET estatus='inactivo', fecha_baja=CURDATE() 
+        WHERE id=?
+    ");
+
         $stmt->bind_param("i", $id);
 
         return $stmt->execute();
@@ -191,35 +196,6 @@ class Empleado
     }
 
 
-    public static function getCompanias()
-    {
-        global $conn;
-
-        $result = $conn->query("SELECT DISTINCT compania FROM empleados ORDER BY compania ASC");
-
-        return $result;
-    }
-
-    public static function getObras()
-    {
-        global $conn;
-
-        $result = $conn->query("SELECT DISTINCT nombre_obra FROM empleados ORDER BY nombre_obra ASC");
-
-        return $result;
-    }
-
-    public static function getPaginado($limite, $offset)
-    {
-        global $conn;
-
-        $stmt = $conn->prepare("SELECT * FROM empleados LIMIT ? OFFSET ?");
-        $stmt->bind_param("ii", $limite, $offset);
-        $stmt->execute();
-
-        return $stmt->get_result();
-    }
-
     public static function contarTotal()
     {
         global $conn;
@@ -228,5 +204,12 @@ class Empleado
         $row = $result->fetch_assoc();
 
         return $row['total'];
+    }
+
+    public static function getInactivos()
+    {
+        global $conn;
+
+        return $conn->query("SELECT * FROM empleados WHERE estatus='inactivo'");
     }
 }
