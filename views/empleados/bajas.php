@@ -29,14 +29,15 @@ $empleados = Empleado::getInactivos();
             <th>Fecha de baja</th>
         </tr>
     </thead>
-     <tbody>
+    <tbody>
         <?php while ($row = $empleados->fetch_assoc()): ?>
             <tr>
                 <td><?= $row['compania'] ?></td>
                 <td><?= $row['nombre'] ?></td>
-                <td><?= date("d/M/Y", strtotime($row['fecha_ingreso']))?></td>
-                <td><?= date("d/M/Y", strtotime($row['fecha_baja']))?></td>
+                <td><?= date("d/M/Y", strtotime($row['fecha_ingreso'])) ?></td>
+                <td><?= date("d/M/Y", strtotime($row['fecha_baja'])) ?></td>
             </tr>
         <?php endwhile; ?>
     </tbody>
 </table>
+

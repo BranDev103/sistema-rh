@@ -51,6 +51,35 @@ verificarSesion();
                 </div>
 
                 <div class="form-group">
+                    <label>Puesto</label>
+                    <select required name="puesto">
+                        <option value="">Seleccione</option>
+                        <option value="ALBAÑIL">ALBAÑIL</option>
+                        <option value="AYUDANTE GENERAL">AYUDANTE GENERAL</option>
+                        <option value="ALUMINERO">ALUMINERO</option>
+                        <option value="ALMACENISTA">ALMACENISTA</option>
+                        <option value="AYUDANTE DE ALMACÉN">AYUDANTE DE ALMACÉN</option>
+                        <option value="AUXILIAR DE TOPOGRAFIA">AUXILIAR DE TOPOGRAFIA</option>
+                        <option value="AUXILIAR DE SEGURIDAD">AUXILIAR DE SEGURIDAD</option>
+                        <option value="CARPINTERO">CARPINTERO</option>
+                        <option value="CADENERO">CADENERO</option>
+                        <option value="CONTROL DE OBRA">CONTROL DE OBRA</option>
+                        <option value="COORDINADOR DE SEGURIDAD E HIGIENE">COORDINADOR DE SEGURIDAD E HIGIENE</option>
+                        <option value="COORDINADOR DE OBRA">COORDINADOR DE OBRA</option>
+                        <option value="ELÉCTRICO">ELÉCTRICO</option>
+                        <option value="FIERRERO">FIERRERO</option>
+                        <option value="LIMPIEZA">LIMPIEZA</option>
+                        <option value="OPERADOR MAQUINARIA">OPERADOR MAQUINARIA</option>
+                        <option value="OPERADOR PIPA">OPERADOR PIPA</option>
+                        <option value="PLOMERO">PLOMERO</option>
+                        <option value="RESIDENTE">RESIDENTE</option>
+                        <option value="TABIQUERO">TABIQUERO</option>
+                        <option value="TAYDE">TAYDE</option>
+                        <option value="TOPOGRAFO">TOPOGRAFO</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
                     <label>Fecha de nacimiento</label>
                     <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" required>
                 </div>
@@ -144,35 +173,6 @@ verificarSesion();
                         <option value="BANREGIO">BANREGIO</option>
                         <option value="BANJERCITO">BANJERCITO</option>
                         <option value="CHEQUE">CHEQUE</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>Puesto</label>
-                    <select required name="puesto">
-                        <option value="">Seleccione</option>
-                        <option value="ALBAÑIL">ALBAÑIL</option>
-                        <option value="AYUDANTE GENERAL">AYUDANTE GENERAL</option>
-                        <option value="ALUMINERO">ALUMINERO</option>
-                        <option value="ALMACENISTA">ALMACENISTA</option>
-                        <option value="AYUDANTE DE ALMACÉN">AYUDANTE DE ALMACÉN</option>
-                        <option value="AUXILIAR DE TOPOGRAFIA">AUXILIAR DE TOPOGRAFIA</option>
-                        <option value="AUXILIAR DE SEGURIDAD">AUXILIAR DE SEGURIDAD</option>
-                        <option value="CARPINTERO">CARPINTERO</option>
-                        <option value="CADENERO">CADENERO</option>
-                        <option value="CONTROL DE OBRA">CONTROL DE OBRA</option>
-                        <option value="COORDINADOR DE SEGURIDAD E HIGIENE">COORDINADOR DE SEGURIDAD E HIGIENE</option>
-                        <option value="COORDINADOR DE OBRA">COORDINADOR DE OBRA</option>
-                        <option value="ELÉCTRICO">ELÉCTRICO</option>
-                        <option value="FIERRERO">FIERRERO</option>
-                        <option value="LIMPIEZA">LIMPIEZA</option>
-                        <option value="OPERADOR MAQUINARIA">OPERADOR MAQUINARIA</option>
-                        <option value="OPERADOR PIPA">OPERADOR PIPA</option>
-                        <option value="PLOMERO">PLOMERO</option>
-                        <option value="RESIDENTE">RESIDENTE</option>
-                        <option value="TABIQUERO">TABIQUERO</option>
-                        <option value="TAYDE">TAYDE</option>
-                        <option value="TOPOGRAFO">TOPOGRAFO</option>
                     </select>
                 </div>
 

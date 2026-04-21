@@ -27,7 +27,7 @@ $empleados = Empleado::getAll();
         <script src="../../public/js/buscar.js"></script>
     </div>
 
-    <table id="tablaEmpleados" class="display" style="width:98%">
+    <table id="tablaEmpleados" class="display" style="width:98%;">
         <thead>
             <tr>
                 <th>No.</th>
@@ -100,11 +100,10 @@ $empleados = Empleado::getAll();
             var table = $('#tablaEmpleados').DataTable({
                 pageLength: 15,
                 searching: false,
-                pagingType: "simple_numbers",
                 scrollX: false,
                 autoWidth: false,
                 dom: 'tip',
-                ordering: true,
+                ordering: false,
                 language: {
                     info: "",
                     zeroRecords: "No se encontraron resultados",

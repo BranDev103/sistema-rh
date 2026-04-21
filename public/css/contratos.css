@@ -40,12 +40,12 @@ h2 {
   border-radius: 5px;
   margin-top: 2.5em;
   text-align: left;
-  margin-left: 56.4%;
+  margin-left: 56%;
 }
 
 
 table {
-  table-layout: fixed;
+  table-layout: auto;
   width: 50%;
   border-collapse: collapse;
   border: 2px solid #000000;

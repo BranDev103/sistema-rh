@@ -1,3 +1,10 @@
+<?php
+require_once '../../models/empleado.php';
+require_once __DIR__ . '/../../helpers/auth.php';
+require_once __DIR__ . '/../../controllers/empleadoController.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -21,7 +28,9 @@
         <nav>
             <a href="../empleados/index.php">HOME</a>
             <a href="../contratos/index.php">CONTRATOS</a>
+             <?php if (esAdmin()): ?>
             <a href="../empleados/bajas.php">BAJAS</a>
+            <?php endif; ?>
             <a href="/sistema_rh/logout.php" onclick="return confirm('¿Deseas Cerrar Sesión?')">CERRAR SESIÓN</a>
         </nav>
     </header>
