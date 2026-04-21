@@ -223,14 +223,6 @@ tbody tr:nth-child(even) {
 
 /****************************************************************************/
 
-.paginacion {
-  width: 100%;
-}
-
-.paginacion a {
-  padding: 7px 10px;
-  text-decoration: none;
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  color: rgb(0, 102, 255);
-  border-radius: 5px;
+tr.selected {
+    background-color: #b3d7ff !important;
 }
