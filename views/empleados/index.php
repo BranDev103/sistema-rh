@@ -101,7 +101,7 @@ $empleados = Empleado::getAll();
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
 
-    <script >
+    <script>
         $(document).ready(function() {
 
             var table = $('#tablaEmpleados').DataTable({
@@ -128,7 +128,11 @@ $empleados = Empleado::getAll();
                 order: [
                     [1, 'asc']
                 ],
-                select: true
+                select: true,
+            });
+
+            $('#tablaEmpleados tbody').on('click', 'tr', function() {
+                $(this).toggleClass('selected');
             });
 
             table.on('order.dt search.dt draw.dt', function() {
@@ -142,7 +146,6 @@ $empleados = Empleado::getAll();
             }).draw();
 
         });
-        
     </script>
 
 

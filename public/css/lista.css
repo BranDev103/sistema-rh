@@ -224,5 +224,15 @@ tbody tr:nth-child(even) {
 /****************************************************************************/
 
 tr.selected {
-    background-color: #b3d7ff !important;
+    background-color: #b3d6ff9c !important;
+}
+
+.descarga{
+  text-decoration: none;
+  color: #000000;
+}
+
+.descarga:hover{
+  color: #0d6efd;
+  text-decoration: underline;
 }
