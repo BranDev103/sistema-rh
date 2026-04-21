@@ -15,9 +15,9 @@ verificarSesion();
     <link rel="stylesheet" href="../../public/css/registro.css">
     <title>Crear registro</title>
 </head>
-
+<?php include '../layouts/header.php'; ?>
 <body>
-    <?php include '../layouts/header.php'; ?>
+    
     <div class="main-content">
         <div class="container">
             <h2>REGISTRAR TRABAJADOR</h2>

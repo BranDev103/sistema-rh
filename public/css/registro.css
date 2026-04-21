@@ -9,7 +9,8 @@ body {
   padding: 50px 100px 100px;
   display: flex;
   justify-content: center;
-   background-color: #000000;
+  /*background-color: #000000;*/
+  background-color: rgb(172, 172, 172);
 }
 
 .container {
@@ -17,7 +18,7 @@ body {
   color: #000000;
   padding: 25px;
   border-radius: 10px;
- box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   width: 500px;
   max-width: 50%;
 }
@@ -41,16 +42,16 @@ label {
   margin-bottom: 2px;
 }
 
-input{
+input {
   width: 95%;
   padding: 8px;
   border-radius: 5px;
   border: 1px solid #253452;
 }
 
-select{
+select {
   width: 99%;
-   padding: 8px;
+  padding: 8px;
   border-radius: 5px;
   border: 1px solid #253452;
 }
