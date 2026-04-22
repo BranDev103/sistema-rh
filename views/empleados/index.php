@@ -22,7 +22,7 @@ $empleados = Empleado::getAll();
 </head>
 
 <body>
-    
+
     <div class="top-bar">
         <h2>Lista de Trabajadores</h2>
         <a class="btn_registro bi bi-plus-square" href=" create.php"> Nuevo Empleado</a>
@@ -98,12 +98,12 @@ $empleados = Empleado::getAll();
             <?php endwhile; ?>
         </tbody>
     </table>
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="../../public/js/buscar.js"></script>p
     <script src="../../public/js/buscarCompanias.js"></script>
     <script src="../../public/js/dataTable.js"></script>
-
 
 </body>
 

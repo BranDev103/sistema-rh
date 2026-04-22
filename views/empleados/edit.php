@@ -105,12 +105,9 @@ $empleado = Empleado::getById($_GET['id']);
           <select name="sexo" required>
             <option value="">Seleccionar</option>
             <option value="masculino" <?php if ($empleado['sexo'] == "masculino") echo "selected"; ?>>masculino</option>
-            <option value="femenino" <?php if ($empleado['sexo'] == "femenino") echo "selected"; ?>>memenino</option>
+            <option value="femenino" <?php if ($empleado['sexo'] == "femenino") echo "selected"; ?>>femenino</option>
           </select>
-
         </div>
-
-
 
         <div class="form-group">
           <label>CURP</label>
