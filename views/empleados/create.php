@@ -47,7 +47,7 @@ verificarSesion();
 
                 <div class="form-group">
                     <label>Nombre Completo</label>
-                    <input type="text" name="nombre" required>
+                    <input type="text" name="nombre" uppercase required>
                 </div>
 
                 <div class="form-group">
@@ -139,22 +139,22 @@ verificarSesion();
 
                 <div class="form-group">
                     <label>CURP</label>
-                    <input type="text" name="curp" required pattern="^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[A-Z0-9]{2}$">
+                    <input type="text" name="curp" required pattern="^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[A-Z0-9]{2}$" title="La CURP debe tener el formato correcto (18 caracteres, letras mayúsculas y números)">
                 </div>
 
                 <div class="form-group">
                     <label>RFC</label>
-                    <input type="text" name="rfc" pattern="^[A-ZÑ&]{3,4}[0-9]{6}[A-Z0-9]{3}$" required>
+                    <input type="text" name="rfc" pattern="^[A-ZÑ&]{3,4}[0-9]{6}[A-Z0-9]{3}$" required title="El RFC debe tener el formato correcto (13 caracteres para personas físicas, 12 para morales, letras mayúsculas y números)">
                 </div>
 
                 <div class="form-group">
                     <label>NSS</label>
-                    <input type="text" name="nss" required pattern="^[0-9]{11}$">
+                    <input type="text" name="nss" required pattern="^[0-9]{11}$" title="El NSS debe tener 11 dígitos numéricos">
                 </div>
 
                 <div class="form-group">
                     <label>Cuenta CLABE</label>
-                    <input type="text" name="cuenta_clabe" required pattern="^[0-9]{18}$">
+                    <input type="text" name="cuenta_clabe" required pattern="^[0-9]{18}$" title="La Cuenta CLABE debe tener 18 dígitos numéricos">
                 </div>
 
                 <div class="form-group">
@@ -187,7 +187,7 @@ verificarSesion();
 
                 <div class="form-group">
                     <label>Teléfono</label>
-                    <input type="tel" name="telefono" pattern="^[0-9]{10}$" maxlength="10" required>
+                    <input type="tel" name="telefono" pattern="^[0-9]{10}$" maxlength="10" required title="El número de teléfono debe tener 10 dígitos numéricos">
                 </div>
 
                 <div class="form-group">
@@ -205,7 +205,6 @@ verificarSesion();
                     <label>Salario en letra</label>
                     <input type="text" name="salario_letra" required>
                 </div>
-
 -->
                 <div class="form-group">
                     <label>Estado civil</label>
@@ -281,7 +280,7 @@ verificarSesion();
 
                 <div class="form-group">
                     <label>Código Postal</label>
-                    <input type="text" name="cp" pattern="^[0-9]{5}$" required>
+                    <input type="text" name="cp" pattern="^[0-9]{5}$" required title="El código postal debe tener 5 dígitos numéricos">
                 </div>
 
                 <div class="form-group">
