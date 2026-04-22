@@ -1,13 +1,12 @@
- $(document).ready(function() {
+$(document).ready(function() {
 
             var table = $('#tablaEmpleados').DataTable({
                 pageLength: 15,
                 searching: false,
-                pagingType: "simple_numbers",
                 scrollX: false,
                 autoWidth: false,
                 dom: 'tip',
-                ordering: true,
+                ordering: false,
                 language: {
                     info: "",
                     zeroRecords: "No se encontraron resultados",
@@ -24,7 +23,7 @@
                 order: [
                     [1, 'asc']
                 ],
-                select: true,
+                select: true
             });
 
             table.on('order.dt search.dt draw.dt', function() {
@@ -36,5 +35,7 @@
                     cell.innerHTML = i + 1 + pageInfo.start;
                 });
             }).draw();
+
+
 
         });

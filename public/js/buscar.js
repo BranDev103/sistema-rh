@@ -8,3 +8,4 @@ document.getElementById("busqueda").addEventListener("keyup", function () {
     fila.style.display = texto.includes(filtro) ? "" : "none";
   });
 });
+
