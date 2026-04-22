@@ -3,6 +3,7 @@ require_once '../../models/empleado.php';
 require_once __DIR__ . '/../../helpers/auth.php';
 require_once __DIR__ . '/../../controllers/empleadoController.php';
 require_once __DIR__ . '/../../helpers/funciones.php';
+verificarSesion();
 $companias = Empleado::getCompanias();
 $empleados = Empleado::getAll();
 ?>

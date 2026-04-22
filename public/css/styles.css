@@ -39,8 +39,7 @@ header nav a:last-child {
 }
 
 header nav a:hover {
-  color: #1a1919;
-  border-bottom: 1px solid #000000;
+  border-bottom:1px solid #0056b3;
 }
 
 header nav a:last-child:hover {
@@ -49,12 +48,7 @@ header nav a:last-child:hover {
   background-color: #fff;
 }
 
-header nav a:active {
-  transition: all 0.25s;
-  -webkit-transition: all 0.25s;
-  box-shadow: none;
-  transform: scale(0.98);
-}
+
 
 /***************************** FOOTER ************************************/
 footer {

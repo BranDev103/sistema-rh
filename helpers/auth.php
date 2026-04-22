@@ -1,6 +1,25 @@
 
 <?php
+define('TIEMPO_EXPIRACION', 900); //15 minutos
 session_start();
+
+if (isset($_SESSION['ultima_actividad'])) {
+
+    $inactivo = time() - $_SESSION['ultima_actividad'];
+
+    if ($inactivo > TIEMPO_EXPIRACION) {
+
+        session_unset();
+        session_destroy();
+
+        header("Location: /sistema_rh/login.html");
+        exit;
+
+    }
+    
+}
+
+$_SESSION['ultima_actividad'] = time();
 
 function verificarSesion()
 {
