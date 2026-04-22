@@ -130,7 +130,7 @@ verificarSesion();
 
                 <div class="form-group">
                     <label for="">Sexo</label>
-                    <select name="sexo">
+                    <select name="sexo" required>
                         <option value="">Seleccionar</option>
                         <option value="masculino">masculino</option>
                         <option value="femenino">femenino</option>
@@ -287,7 +287,7 @@ verificarSesion();
                     <label>Nombre de obra</label>
                     <select name="nombre_obra" required>
                         <option value="">Seleccione</option>
-                        <option value="INFONAVIT LOS PEÑASCOS, UBICADO EN AV. MELCHOR OCAMPO, TEPEJI DEL RÍO, C.P. 42855, HIDALGO.">"INFONAVIT LOS PEÑASCOS", UBICADO EN AV. MELCHOR OCAMPO, TEPEJI DEL RÍO, C.P. 42855, HIDALGO.</option>
+                        <option value="INFONAVIT LOS PEÑASCOS, UBICADO EN AV. MELCHOR OCAMPO, TEPEJI DEL RÍO, C.P. 42855, HIDALGO">"INFONAVIT LOS PEÑASCOS", UBICADO EN AV. MELCHOR OCAMPO, TEPEJI DEL RÍO, C.P. 42855, HIDALGO</option>
                         <option value="EDIFICACIÓN DESTINADO A LA EDIFICACIÓN DE 954  (NOVECIENTAS CINCUENTA Y CUATRO) VIVIENDAS EN EL PROYECTO PRELIMINAR POLÍGONO 1; UBICADO EN EL MUNICIPIO DE TEPEJI DEL RÍO DE OCAMPO, EN HIDALGO">EDIFICACIÓN DESTINADO A LA EDIFICACIÓN DE 954 (NOVECIENTAS CINCUENTA Y CUATRO) VIVIENDAS EN EL PROYECTO PRELIMINAR POLÍGONO 1; UBICADO EN EL MUNICIPIO DE TEPEJI DEL RÍO DE OCAMPO, EN HIDALGO</option>
                         <option value="EDIFICACIÓN DESTINADO A LA EDIFICACIÓN DE 180  (CIENTO OCHENTA) VIVIENDAS EN EL PROYECTO PRELIMINAR POLÍGONO UBICADO EN EL MUNICIPIO DE TEPEJI DEL RÍO DE OCAMPO, EN HIDALGO">EDIFICACIÓN DESTINADO A LA EDIFICACIÓN DE 180 (CIENTO OCHENTA) VIVIENDAS EN EL PROYECTO PRELIMINAR POLÍGONO UBICADO EN EL MUNICIPIO DE TEPEJI DEL RÍO DE OCAMPO, EN HIDALGO</option>
                         <option value="EDIFICACIÓN DESTINADO A LA EDIFICACIÓN DE 260  (DOSCIENTAS SESENTA) VIVIENDAS EN EL PROYECTO RESERVA 2 UBICADO EN EL MUNICIPIO DE TEPEJI DEL RÍO DE OCAMPO, EN HIDALGO">EDIFICACIÓN DESTINADO A LA EDIFICACIÓN DE 260 (DOSCIENTAS SESENTA) VIVIENDAS EN EL PROYECTO RESERVA 2 UBICADO EN EL MUNICIPIO DE TEPEJI DEL RÍO DE OCAMPO, EN HIDALGO</option>

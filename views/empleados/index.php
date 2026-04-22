@@ -2,9 +2,11 @@
 require_once '../../models/empleado.php';
 require_once __DIR__ . '/../../helpers/auth.php';
 require_once __DIR__ . '/../../controllers/empleadoController.php';
+require_once __DIR__ . '/../../helpers/funciones.php';
+$companias = Empleado::getCompanias();
 $empleados = Empleado::getAll();
-
 ?>
+
 <?php include("../layouts/header.php"); ?>
 
 <!DOCTYPE html>
@@ -25,9 +27,21 @@ $empleados = Empleado::getAll();
         <a class="btn_registro bi bi-plus-square" href=" create.php"> Nuevo Empleado</a>
         <input type="text" id="busqueda" placeholder="Buscar...">
         <script src="../../public/js/buscar.js"></script>
+
+        <select id="filtroCompania">
+            <option value="">Todas las compañías</option>
+
+            <?php while ($comp = $companias->fetch_assoc()): ?>
+                <option value="<?= $comp['compania'] ?>">
+                    <?= $comp['compania'] ?>
+                </option>
+            <?php endwhile; ?>
+        </select>
     </div>
 
+
     <table id="tablaEmpleados" class="display" style="width:98%;">
+
         <thead>
             <tr>
                 <th>No.</th>
@@ -49,7 +63,7 @@ $empleados = Empleado::getAll();
                 <tr>
                     <td></td>
                     <td><?= $row['compania'] ?></td>
-                    <td><?= strtoupper($row['nombre']) ?></td>
+                    <td><?= mayusculas($row['nombre']) ?></td>
                     <td><?= $row['puesto'] ?></td>
                     <td><?= $row['telefono'] ?></td>
                     <td><?= $row['salario'] ?></td>
@@ -132,6 +146,12 @@ $empleados = Empleado::getAll();
                     cell.innerHTML = i + 1 + pageInfo.start;
                 });
             }).draw();
+
+             $('#filtroCompania').on('change', function() {
+                let valor = $(this).val();
+
+                table.column(1).search(valor).draw();
+            });
 
         });
     </script>

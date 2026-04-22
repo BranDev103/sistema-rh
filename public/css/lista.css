@@ -237,3 +237,8 @@ td.selected-cell {
   color: #0d6efd;
   text-decoration: underline;
 }
+
+table.dataTable thead th {
+    text-align: center !important;
+    vertical-align: middle;
+}

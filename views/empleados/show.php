@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../../models/empleado.php';
 require_once __DIR__ . '/../../helpers/auth.php';
+require_once __DIR__ . '/../../helpers/funciones.php';
 verificarSesion();
 
 if (!isset($_GET['id'])) {
@@ -47,7 +48,7 @@ $empleado = Empleado::getById($_GET['id']);
         <div>
             <h3>Datos Generales</h3>
             <p><strong>Compañía:</strong> <?= $empleado['compania'] ?></p>
-            <p><strong>Nombre:</strong> <?= $empleado['nombre'] ?></p>
+            <p><strong>Nombre:</strong> <?= mayusculas($empleado['nombre']) ?></p>
             <p><strong>Puesto:</strong> <?= $empleado['puesto'] ?></p>
             <p><strong>Teléfono:</strong> <?= $empleado['telefono'] ?></p>
 
@@ -57,16 +58,16 @@ $empleado = Empleado::getById($_GET['id']);
             <p><strong>NSS:</strong> <?= $empleado['nss'] ?></p>
             <p><strong>Fecha de nacimiento:</strong> <?= date("d/M/Y", strtotime($empleado['fecha_nacimiento'])) ?></p>
             <p><strong>Edad:</strong> <?= $empleado['edad'] ?></p>
-            <p><strong>Sexo:</strong> <?= $empleado['sexo'] ?></p>
-            <p><strong>Estado civil:</strong> <?= $empleado['estado_civil'] ?></p>
-            <p><strong>Estado de nacimiento:</strong> <?= $empleado['estado_nacimiento'] ?></p>
+            <p><strong>Sexo:</strong> <?= mayusculas($empleado['sexo']) ?></p>
+            <p><strong>Estado civil:</strong> <?= mayusculas($empleado['estado_civil']) ?></p>
+            <p><strong>Estado de nacimiento:</strong> <?= mayusculas($empleado['estado_nacimiento']) ?></p>
 
             <h3>Dirección</h3>
             <p>
-                <?= $empleado['calle'] ?> #<?= $empleado['num_exterior'] ?>,
-                <?= $empleado['colonia'] ?>,
-                <?= $empleado['municipio'] ?>,
-                <?= $empleado['estado'] ?>,
+                <?= mayusculas($empleado['calle']) ?> #<?= $empleado['num_exterior'] ?>,
+                <?= mayusculas($empleado['colonia']) ?>,
+                <?= mayusculas($empleado['municipio']) ?>,
+                <?= mayusculas($empleado['estado']) ?>,
                 CP <?= $empleado['cp'] ?>
             </p>
         </div>
@@ -80,8 +81,8 @@ $empleado = Empleado::getById($_GET['id']);
             <h3>Datos Salariales</h3>
             <p><strong>Salario:</strong> $<?= $empleado['salario'] ?></p>
             <p><strong>Salario Diario Integral (SDI):</strong> $<?= $empleado['sdi'] ?></p>
-            <p><strong>Salario en letra:</strong> <?= $empleado['salario_letra'] ?></p>
-            <p><strong>Tipo de pago:</strong> <?= $empleado['pago'] ?></p>
+            <p><strong>Salario en letra:</strong> <?=mayusculas($empleado['salario_letra']) ?></p>
+            <p><strong>Tipo de pago:</strong> <?=mayusculas($empleado['pago']) ?></p>
 
             <h3>Datos Laborales</h3>
             <p><strong>Fecha de ingreso:</strong> <?= date("d/M/Y", strtotime($empleado['fecha_ingreso'])) ?></p>

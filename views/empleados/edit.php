@@ -102,10 +102,10 @@ $empleado = Empleado::getById($_GET['id']);
 
         <div class="form-group">
           <label>Sexo</label>
-          <select name="sexo">
+          <select name="sexo" required>
             <option value="">Seleccionar</option>
-            <option value="Masculino" <?= $empleado['sexo'] == 'Masculino' ? 'selected' : '' ?>>Masculino</option>
-            <option value="Femenino" <?= $empleado['sexo'] == 'Femenino' ? 'selected' : '' ?>>Femenino</option>
+            <option value="masculino" <?php if ($empleado['sexo'] == "masculino") echo "selected"; ?>>masculino</option>
+            <option value="femenino" <?php if ($empleado['sexo'] == "femenino") echo "selected"; ?>>memenino</option>
           </select>
 
         </div>

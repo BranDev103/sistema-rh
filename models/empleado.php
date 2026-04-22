@@ -212,4 +212,17 @@ class Empleado
 
         return $conn->query("SELECT * FROM empleados WHERE estatus='inactivo'");
     }
+
+    public static function getCompanias() {
+    global $conn;
+
+    $result = $conn->query("
+        SELECT DISTINCT compania 
+        FROM empleados 
+        WHERE estatus = 'activo'
+        ORDER BY compania ASC
+    ");
+
+    return $result;
+}
 }

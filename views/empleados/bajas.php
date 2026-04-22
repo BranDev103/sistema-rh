@@ -33,7 +33,7 @@ $empleados = Empleado::getInactivos();
         <?php while ($row = $empleados->fetch_assoc()): ?>
             <tr>
                 <td><?= $row['compania'] ?></td>
-                <td><?= $row['nombre'] ?></td>
+                <td><?= strtoupper($row['nombre']) ?></td>
                 <td><?= date("d/M/Y", strtotime($row['fecha_ingreso'])) ?></td>
                 <td><?= date("d/M/Y", strtotime($row['fecha_baja'])) ?></td>
             </tr>

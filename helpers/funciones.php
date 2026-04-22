@@ -53,4 +53,6 @@ function generarFolio($total) {
     return str_pad($numero, 2, "0", STR_PAD_LEFT);
 }
 
-
+function mayusculas($texto) {
+    return mb_strtoupper($texto, 'UTF-8');
+}

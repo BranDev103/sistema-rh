@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../../models/empleado.php';
 require_once __DIR__ . '/../../helpers/auth.php';
+require_once __DIR__ . '/../../helpers/funciones.php';
 require_once __DIR__ . '/../../controllers/empleadoController.php';
 verificarSesion();
 
@@ -33,11 +34,11 @@ $empleados = Empleado::getAll();
         <?php while ($row = $empleados->fetch_assoc()): ?>
             <tr>
                 <td><?= $row['compania'] ?></td>
-                <td><?= $row['nombre'] ?></td>
+                <td><?= mayusculas($row['nombre']) ?></td>
                 <td><?= $row['puesto'] ?></td>
                 <td>
                     <?php if (!empty($row['contrato_path'])): ?>
-                        <a class="descarga bi bi-arrow-down-circle" href="../../controllers/EmpleadoController.php?action=descargarContrato&id=<?= $row['id'] ?>"> Descargar</a>
+                        <a class="descarga bi bi-arrow-down-circle" href="../../controllers/EmpleadoController.php?action=contrato&id=<?= $row['id'] ?>"> Descargar</a>
                         <?php else: ?>No disponible
                     <?php endif; ?>
 
