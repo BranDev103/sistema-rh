@@ -23,19 +23,20 @@ $empleados = Empleado::getAll();
 </head>
 
 <body>
-
     <div class="top-bar">
         <h2>Lista de Trabajadores</h2>
-        <a class="btn_registro bi bi-plus-square" href=" create.php"> Nuevo Empleado</a>
-        <input type="text" id="busqueda" placeholder="Buscar...">
-        <select id="filtroCompania">
-            <option value="">Todas las compañías</option>
-            <?php while ($comp = $companias->fetch_assoc()): ?>
-                <option value="<?= $comp['compania'] ?>">
-                    <?= $comp['compania'] ?>
-                </option>
-            <?php endwhile; ?>
-        </select>
+        <div>
+            <a class="btn_registro bi bi-plus-square" href=" create.php"> Nuevo Empleado</a>
+            <input type="text" id="busqueda" placeholder="Buscar...">
+            <select id="filtroCompania">
+                <option value="">Todas las compañías</option>
+                <?php while ($comp = $companias->fetch_assoc()): ?>
+                    <option value="<?= $comp['compania'] ?>">
+                        <?= $comp['compania'] ?>
+                    </option>
+                <?php endwhile; ?>
+            </select>
+        </div>
     </div>
 
     <table id="tablaEmpleados" class="display" style="width:98%;">
@@ -102,7 +103,7 @@ $empleados = Empleado::getAll();
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-    <script src="../../public/js/buscar.js"></script>p
+    <script src="../../public/js/buscar.js"></script>
     <script src="../../public/js/buscarCompanias.js"></script>
     <script src="../../public/js/dataTable.js"></script>
 
