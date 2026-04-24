@@ -1,5 +1,6 @@
 <?php
-function numeroALetras($numero) {
+function numeroALetras($numero)
+{
 
     if (!class_exists('NumberFormatter')) {
         return $numero . " PESOS";
@@ -7,13 +8,13 @@ function numeroALetras($numero) {
 
     $formatter = new NumberFormatter("es", NumberFormatter::SPELLOUT);
 
-  
+
     $partes = explode('.', number_format($numero, 2, '.', ''));
 
     $entero = (int)$partes[0];
     $decimal = $partes[1];
 
-  
+
     $letras = ucfirst($formatter->format($entero));
 
     return $letras . " " . $decimal . "/100 pesos";
@@ -21,7 +22,8 @@ function numeroALetras($numero) {
 
 /********************************************************** */
 
-function formatearFechaContrato($fecha) {
+function formatearFechaContrato($fecha)
+{
 
     $timestamp = strtotime($fecha);
 
@@ -47,12 +49,14 @@ function formatearFechaContrato($fecha) {
     return $dia . ' de ' . $meses[$mes] . ' del ' . $anio;
 }
 
-function generarFolio($total) {
+function generarFolio($total)
+{
     $numero = $total + 1;
 
     return str_pad($numero, 2, "0", STR_PAD_LEFT);
 }
 
-function mayusculas($texto) {
+function mayusculas($texto)
+{
     return mb_strtoupper($texto, 'UTF-8');
 }

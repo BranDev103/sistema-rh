@@ -38,10 +38,10 @@ $empleados = Empleado::getAll();
                 <td><?= $row['puesto'] ?></td>
                 <td>
                     <?php if (!empty($row['contrato_path'])): ?>
+                        <?php if (esAdmin()): ?>
                         <a class="descarga bi bi-arrow-down-circle" href="../../controllers/EmpleadoController.php?action=contrato&id=<?= $row['id'] ?>"> Descargar</a>
-                        <?php else: ?>No disponible
-                    <?php endif; ?>
-
+                          <?php else: ?>No disponible<?php endif; ?>
+                        <?php endif; ?>
                 </td>
             </tr>
         <?php endwhile; ?>
