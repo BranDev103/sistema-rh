@@ -10,7 +10,6 @@ $(document).ready(function () {
         language: {
             info: "",
             zeroRecords: "No se encontraron resultados",
-            infoEmpty: "",
             paginate: {
                 previous: "<<",
                 next: ">>"

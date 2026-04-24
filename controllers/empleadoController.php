@@ -50,7 +50,6 @@ class EmpleadoController
             'fecha_ingreso' => $_POST['fecha_ingreso'],
             'nombre_obra' => $_POST['nombre_obra'],
             'pago' => $_POST['pago'],
-            'folio' => $folio
         ];
 
         Empleado::create($data);
