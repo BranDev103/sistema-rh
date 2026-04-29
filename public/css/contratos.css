@@ -38,9 +38,10 @@ h2 {
   padding: 6px 50px 6px 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  margin-top: 2.5em;
+  margin-top: 2.8em;
+  margin-bottom: 1em;
   text-align: left;
-  margin-left: 56%;
+  margin-left: 65%;
 }
 
 
@@ -86,4 +87,9 @@ tfoot td {
 
 tbody tr:nth-child(even) {
   background-color: #ffffff;
+}
+
+table.dataTable thead th {
+    text-align: center !important;
+    vertical-align: middle;
 }

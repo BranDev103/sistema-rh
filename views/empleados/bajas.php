@@ -10,6 +10,7 @@ $empleados = Empleado::getInactivos();
 
 <link rel="stylesheet" href="../../public/css/contratos.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 
 <?php include("../layouts/header.php"); ?>
 <h2>Lista de Bajas</h2>
@@ -20,9 +21,10 @@ $empleados = Empleado::getInactivos();
     <script src="../../public/js/buscar.js"></script>
 </div>
 
-<table border="1">
+<table id="tablaBajas" class="display" style="width: 60%;">
     <thead>
         <tr>
+            <th>No.</th>
             <th>Compañia</th>
             <th>Nombre</th>
             <th>Fecha de ingreso</th>
@@ -32,6 +34,7 @@ $empleados = Empleado::getInactivos();
     <tbody>
         <?php while ($row = $empleados->fetch_assoc()): ?>
             <tr>
+                <td></td>
                 <td><?= $row['compania'] ?></td>
                 <td><?= strtoupper($row['nombre']) ?></td>
                 <td><?= date("d/M/Y", strtotime($row['fecha_ingreso'])) ?></td>
@@ -41,3 +44,6 @@ $empleados = Empleado::getInactivos();
     </tbody>
 </table>
 
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="../../public/js/dataTable.js"></script>

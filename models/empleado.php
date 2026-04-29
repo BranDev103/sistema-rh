@@ -8,7 +8,7 @@ class Empleado
     public static function getAll()
     {
         global $conn;
-        $sql = "SELECT * FROM empleados WHERE estatus='activo'";
+        $sql = "SELECT * FROM empleados WHERE estatus='activo' ORDER BY id DESC";
         return $conn->query($sql);
     }
 
