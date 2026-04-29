@@ -1,10 +1,10 @@
-<?php //Conexión con la base de datos EQUIPOS
+<?php //Conexión con la base de datos
 
 //Datos de acceso
 $host = "localhost";
-$usuario = "root";
-$password = "";
-$bd = "registro_obra";
+$usuario = "daznamx_admin";
+$password = "EsrTtOtt&J;A";
+$bd = "daznamx_registrObra";
 
 $conn = mysqli_connect($host, $usuario, $password, $bd); 
 

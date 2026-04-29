@@ -28,7 +28,7 @@ if ($usuario && password_verify($password, $usuario['password'])) {
 } else {
     echo "<script type='text/javascript'>";
     echo "alert('Credenciales incorrectas, intentelo de nuevo');";
-    echo "window.location.href='/sistema_rh/login.html';";
+    echo "window.location.href='/interno/rh/login.html';";
     echo "</script>";
     exit;
 }

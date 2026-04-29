@@ -31,7 +31,7 @@ require_once __DIR__ . '/../../controllers/empleadoController.php';
              <?php if (esAdmin()): ?>
             <a href="../empleados/bajas.php">BAJAS</a>
             <?php endif; ?>
-            <a href="/sistema_rh/logout.php" onclick="return confirm('¿Deseas Cerrar Sesión?')">CERRAR SESIÓN</a>
+            <a href="/interno/rh/logout.php" onclick="return confirm('¿Deseas Cerrar Sesión?')">CERRAR SESIÓN</a>
         </nav>
     </header>
     

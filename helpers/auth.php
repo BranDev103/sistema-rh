@@ -12,7 +12,7 @@ if (isset($_SESSION['ultima_actividad'])) {
         session_unset();
         session_destroy();
 
-        header("Location: /sistema_rh/login.html");
+        header("Location: /interno/rh/login.html");
         exit;
 
     }
@@ -24,7 +24,7 @@ $_SESSION['ultima_actividad'] = time();
 function verificarSesion()
 {
     if (!isset($_SESSION['usuario'])) {
-        header("Location: /sistema_rh/login.html");
+        header("Location: /interno/rh/login.html");
         exit;
     }
 }
