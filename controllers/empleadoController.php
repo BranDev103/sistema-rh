@@ -3,6 +3,7 @@ require_once __DIR__ . '/../models/empleado.php';
 require_once __DIR__ . '/../helpers/funciones.php';
 require_once __DIR__ . '/../helpers/contrato.php';
 require_once __DIR__ . '/../helpers/auth.php';
+require_once __DIR__ . '/../helpers/contrato_pdf.php';
 
 
 class EmpleadoController
@@ -169,12 +170,41 @@ class EmpleadoController
         exit;
     }
 
+    public static function generarContratoPDF()
+    {
+        if (!isset($_GET['id'])) {
+            die("ID no proporcionado");
+        }
+
+        $empleado = Empleado::getById($_GET['id']);
+
+        if (!$empleado) {
+            die("Empleado no encontrado");
+        }
+
+        $ruta = generarContratoPDF($empleado);
+
+        if (!$ruta || !file_exists($ruta)) {
+            die("Error al generar PDF");
+        }
+
+        while (ob_get_level()) {
+            ob_end_clean();
+        }
+
+        header("Content-Type: application/pdf");
+        header("Content-Disposition: inline; filename=contrato.pdf");
+        readfile($ruta);
+        exit;
+    }
+
+
     public static function descargarContrato()
     {
         if (!esAdmin()) {
             echo "<script>
             alert('No tienes los permisos para realizar esta acción');
-            window.location.href = '../views/contratos/index.php';
+            window.location.href = '" . __DIR__ . "/../views/contratos/index.php';
         </script>";
             exit;
         }
@@ -223,4 +253,9 @@ if (isset($_GET['action']) && $_GET['action'] === 'contrato') {
 /**************************************************************** */
 if (isset($_GET['action']) && $_GET['action'] === 'descargarContrato') {
     EmpleadoController::descargarContrato();
+}
+
+/**************************************************************** */
+if (isset($_GET['action']) && $_GET['action'] === 'pdf') {
+    EmpleadoController::generarContratoPDF();
 }

@@ -41,10 +41,15 @@ $empleados = Empleado::getAll();
                 <td><?= $row['puesto'] ?></td>
                 <td>
                     <?php if (!empty($row['contrato_path'])): ?>
-                        <?php if (esAdmin()): ?>
-                            <a class="descarga bi bi-arrow-down-circle" href="../../controllers/EmpleadoController.php?action=contrato&id=<?= $row['id'] ?>"> Descargar</a>
-                            <?php else: ?>No disponible<?php endif; ?>
-                        <?php endif; ?>
+                        <?php if (!esAdmin()): ?>
+                            <a class="descarga bi bi-arrow-down-circle" href="../../controllers/EmpleadoController.php?action=pdf&id=<?= $row['id'] ?>" target="_blank"> Imprimir</a>
+                           
+                                <?php else: (esAdmin()) ?>
+                                    <a class="descarga bi bi-arrow-down-circle" href="../../controllers/EmpleadoController.php?action=contrato&id=<?= $row['id'] ?>"> Descargar</a>
+                            <?php endif; ?>
+                    <?php else: ?>
+                        <span class="no-contrato">No disponible</span>
+                    <?php endif; ?>
                 </td>
             </tr>
         <?php endwhile; ?>
@@ -52,6 +57,6 @@ $empleados = Empleado::getAll();
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
         <script src="../../public/js/dataTable.js"></script>
-        
+
     </tbody>
 </table>

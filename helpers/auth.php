@@ -1,7 +1,9 @@
-
 <?php
 define('TIEMPO_EXPIRACION', 900); //15 minutos
 session_start();
+
+header("Cache-Control: no-store, no-cache, must-revalidate");
+header("Pragma: no-cache");
 
 if (isset($_SESSION['ultima_actividad'])) {
 
@@ -12,7 +14,7 @@ if (isset($_SESSION['ultima_actividad'])) {
         session_unset();
         session_destroy();
 
-        header("Location: /interno/rh/login.html");
+       header("Location: /interno/rh/login.html");
         exit;
 
     }

@@ -2,9 +2,9 @@
 
 //Datos de acceso
 $host = "localhost";
-$usuario = "daznamx_admin";
-$password = "EsrTtOtt&J;A";
-$bd = "daznamx_registrObra";
+$usuario = "root";
+$password = "";
+$bd = "registro_obra";
 
 $conn = mysqli_connect($host, $usuario, $password, $bd); 
 

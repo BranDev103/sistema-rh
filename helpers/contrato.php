@@ -19,9 +19,6 @@ function generarContrato($empleado)
     $template = new TemplateProcessor($templatePath);
 
     //Reemplazar datos
-
-
-
     $template->setValue('nombre', mayusculas($empleado['nombre']));
     $template->setValue('puesto', mayusculas($empleado['puesto']));
     $template->setValue('compania', mayusculas($empleado['compania']));
