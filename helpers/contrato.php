@@ -25,10 +25,10 @@ function generarContrato($empleado)
     //Crear instancia
     $template = new TemplateProcessor($templatePath);
 
-    /**
-     * Reemplaza los marcadores en la plantilla de contrato con los datos del empleado.
-     * Los marcadores en la plantilla deben coincidir con los nombres de las claves en el array $empleado.
-     */
+    //Reemplazar datos
+
+
+
     $template->setValue('nombre', mayusculas($empleado['nombre']));
     $template->setValue('puesto', mayusculas($empleado['puesto']));
     $template->setValue('compania', mayusculas($empleado['compania']));

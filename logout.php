@@ -12,5 +12,5 @@ header("Expires: 0");
 $_SESSION = [];
 session_destroy();
 
-header("Location: /interno/rh/login.html");
+header("Location: login.html");
 exit;

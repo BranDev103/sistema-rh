@@ -22,7 +22,6 @@ require_once __DIR__ . '/../../controllers/empleadoController.php';
 
 <body>
 
-
     <header>
         <a href="../empleados/index.php"> <img src="../../public/img/logo_header.png"></a>
         <nav>

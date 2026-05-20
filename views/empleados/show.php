@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../../models/empleado.php';
 require_once __DIR__ . '/../../helpers/auth.php';
 require_once __DIR__ . '/../../helpers/funciones.php';
+require_once __DIR__ . '/../../helpers/contrato_pdf.php';
 verificarSesion();
 
 if (!isset($_GET['id'])) {
@@ -25,7 +26,7 @@ $empleado = Empleado::getById($_GET['id']);
     <link rel="stylesheet" href="../../public/css/show.css">
     <link rel="icon" href="../../public/img/logo.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    
+
     <title>Ver detalle</title>
 </head>
 
@@ -34,9 +35,12 @@ $empleado = Empleado::getById($_GET['id']);
 
     <a class="btn bi bi-arrow-left-square" href="index.php"> Volver</a>
     <a class="btn bi-pencil-square" href="edit.php?id=<?= $empleado['id'] ?>"> Editar</a>
-    <?php if(esAdmin()): ?>
-    <a class="btn bi bi-file-word" href="../../controllers/empleadoController.php?action=contrato&id=<?= $empleado['id'] ?>"> Generar contrato</a>
+    <?php if (esAdmin()): ?>
+        <a class="btn bi bi-file-word" href="../../controllers/empleadoController.php?action=contrato&id=<?= $empleado['id'] ?>"> Generar contrato</a>
     <?php endif; ?>
+
+    <a class="btn bi bi-file-earmark-pdf" href="../../controllers/empleadoController.php?action=pdf&id=<?= $empleado['id'] ?>" target="_blank"> Imprimir PDF</a>
+
     <?php if (esAdmin()): ?>
         <a class="btn bi bi-trash" href="../../controllers/empleadoController.php?action=delete&id=<?= $empleado['id'] ?>"
             onclick="return confirm('¿Eliminar este registro?')"> Eliminar</a>
@@ -81,8 +85,8 @@ $empleado = Empleado::getById($_GET['id']);
             <h3>Datos Salariales</h3>
             <p><strong>Salario:</strong> $<?= $empleado['salario'] ?></p>
             <p><strong>Salario Diario Integral (SDI):</strong> $<?= $empleado['sdi'] ?></p>
-            <p><strong>Salario en letra:</strong> <?=mayusculas($empleado['salario_letra']) ?></p>
-            <p><strong>Tipo de pago:</strong> <?=mayusculas($empleado['pago']) ?></p>
+            <p><strong>Salario en letra:</strong> <?= mayusculas($empleado['salario_letra']) ?></p>
+            <p><strong>Tipo de pago:</strong> <?= mayusculas($empleado['pago']) ?></p>
 
             <h3>Datos Laborales</h3>
             <p><strong>Fecha de ingreso:</strong> <?= date("d/M/Y", strtotime($empleado['fecha_ingreso'])) ?></p>
@@ -92,7 +96,7 @@ $empleado = Empleado::getById($_GET['id']);
     </div>
 
     <hr>
-    
+
 </body>
 
 </html>
