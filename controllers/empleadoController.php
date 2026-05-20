@@ -9,6 +9,10 @@ require_once __DIR__ . '/../helpers/contrato_pdf.php';
 class EmpleadoController
 {
 
+/**
+ * Controlador para manejar las operaciones relacionadas con los empleados, incluyendo la creación, actualización, eliminación y generación de contratos en formato Word y PDF.
+ * Este controlador interactúa con el modelo Empleado para realizar las operaciones de base de datos y utiliza funciones auxiliares para formatear datos y generar documentos.
+ */
 
     public static function store()
     {
@@ -117,9 +121,6 @@ class EmpleadoController
         exit;
     }
 
-
-
-
     public static function delete()
     {
 
@@ -135,6 +136,12 @@ class EmpleadoController
 
     /**********************************************************************/
 
+    /**
+     * Genera un contrato en formato Word para un empleado específico y lo envía al navegador para su descarga.
+     * El método verifica que se haya proporcionado un ID de empleado, obtiene los datos del   
+     * empleado, genera el contrato utilizando la función auxiliar `generarContrato`, y luego envía los encabezados HTTP adecuados para forzar la descarga del archivo generado. 
+     * Si ocurre algún error durante el proceso, se muestra un mensaje de error correspondiente.
+     */
     public static function generarContrato()
     {
 
@@ -159,7 +166,6 @@ class EmpleadoController
         while (ob_get_level()) {
             ob_end_clean();
         }
-
 
         header("Content-Description: File Transfer");
         header("Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document");
@@ -230,6 +236,11 @@ class EmpleadoController
 
 
 /********************************************************************** */
+
+/**
+ * Manejo de rutas para las operaciones relacionadas con los empleados. Dependiendo de la acción especificada en la solicitud HTTP, se llama al método correspondiente del controlador EmpleadoController para realizar la operación deseada, como crear, actualizar, eliminar o generar contratos en formato Word o PDF.
+ * El controlador se encarga de procesar los datos recibidos, interactuar con el modelo Empleado para realizar las operaciones de base de datos, y luego redirigir o enviar la respuesta adecuada al cliente.
+ */
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 

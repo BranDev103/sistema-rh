@@ -5,6 +5,13 @@ header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
 
+/**
+ * Controlador para manejar la autenticación de usuarios en el sistema de recursos humanos.
+ * Este archivo procesa las solicitudes de inicio de sesión, verifica las credenciales del usuario y gestiona la sesión del usuario. 
+ * Si las credenciales son correctas, se redirige al usuario a la página principal de empleados; de lo contrario, se muestra un mensaje de error y se redirige al formulario de inicio de sesión.
+ *
+ */
+
 session_start();
 
 $nombre = $_POST['nombre'];
