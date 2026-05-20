@@ -1,5 +1,9 @@
-
 <?php
+/**
+ * Manejo de autenticación y control de sesión para el sistema de recursos humanos.
+ * Este archivo contiene funciones para verificar la sesión del usuario, determinar si el usuario es administrador y gestionar la expiración de la sesión.
+ * 
+ */
 define('TIEMPO_EXPIRACION', 900); //15 minutos
 session_start();
 

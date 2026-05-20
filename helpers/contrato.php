@@ -4,6 +4,13 @@ require_once __DIR__ . '/funciones.php';
 
 use PhpOffice\PhpWord\TemplateProcessor;
 
+/**
+ * Genera un contrato en formato Word para un empleado dado.
+ *
+ * @param array $empleado Datos del empleado.
+ * @return string Ruta del archivo generado.
+ */
+
 function generarContrato($empleado)
 {
 
@@ -18,10 +25,10 @@ function generarContrato($empleado)
     //Crear instancia
     $template = new TemplateProcessor($templatePath);
 
-    //Reemplazar datos
-
-
-
+    /**
+     * Reemplaza los marcadores en la plantilla de contrato con los datos del empleado.
+     * Los marcadores en la plantilla deben coincidir con los nombres de las claves en el array $empleado.
+     */
     $template->setValue('nombre', mayusculas($empleado['nombre']));
     $template->setValue('puesto', mayusculas($empleado['puesto']));
     $template->setValue('compania', mayusculas($empleado['compania']));

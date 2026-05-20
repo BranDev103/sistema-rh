@@ -3,8 +3,18 @@ require_once __DIR__ . '/../config/conexion.php';
 
 class Empleado
 {
+    /**
+     * Modelo de acceso a datos para la tabla empleados.
+     *
+     * Provee métodos estáticos para operaciones CRUD, conteo y consultas
+     * auxiliares relacionadas con empleados activos e inactivos.
+     */
 
-
+    /**
+     * Obtiene todos los empleados activos ordenados por id descendente.
+     *
+     * @return mysqli_result Resultado de la consulta con los empleados activos.
+     */
     public static function getAll()
     {
         global $conn;
@@ -12,7 +22,12 @@ class Empleado
         return $conn->query($sql);
     }
 
-
+    /**
+     * Obtiene un empleado por su identificador.
+     *
+     * @param int $id Identificador del empleado.
+     * @return array|null Fila asociativa del empleado o null si no existe.
+     */
     public static function getById($id)
     {
         global $conn;
@@ -24,7 +39,12 @@ class Empleado
         return $stmt->get_result()->fetch_assoc();
     }
 
-
+    /**
+     * Inserta un nuevo empleado en la base de datos.
+     *
+     * @param array $data Datos del empleado que serán guardados.
+     * @return bool Retorna true cuando la inserción se realizó correctamente.
+     */
     public static function create($data)
     {
         global $conn;
@@ -74,7 +94,6 @@ class Empleado
             $data['fecha_ingreso'],
             $data['nombre_obra'],
             $data['pago']
-           
         );
 
         if (!$stmt->execute()) {
@@ -84,7 +103,13 @@ class Empleado
         return true;
     }
 
-
+    /**
+     * Actualiza los datos de un empleado existente.
+     *
+     * @param int   $id   Identificador del empleado a actualizar.
+     * @param array $data Nuevos datos del empleado.
+     * @return bool Retorna true cuando la actualización se realizó correctamente.
+     */
     public static function update($id, $data)
     {
         global $conn;
@@ -144,7 +169,12 @@ class Empleado
         return true;
     }
 
-
+    /**
+     * Marca un empleado como inactivo y registra la fecha de baja.
+     *
+     * @param int $id Identificador del empleado a desactivar.
+     * @return bool Resultado de la ejecución del query.
+     */
     public static function delete($id)
     {
         global $conn;
@@ -160,6 +190,13 @@ class Empleado
         return $stmt->execute();
     }
 
+    /**
+     * Actualiza la ruta del contrato asociado a un empleado.
+     *
+     * @param int    $id    Identificador del empleado.
+     * @param string $ruta  Ruta del archivo de contrato.
+     * @return bool Resultado de la ejecución del query.
+     */
     public static function guardarContrato($id, $ruta)
     {
         global $conn;
@@ -170,7 +207,11 @@ class Empleado
         return $stmt->execute();
     }
 
-
+    /**
+     * Cuenta el número total de empleados en la base de datos.
+     *
+     * @return int Total de empleados.
+     */
     public static function contarActivos()
     {
         global $conn;
@@ -182,7 +223,13 @@ class Empleado
         return $row['total'];
     }
 
-
+    /**
+     * Cuenta el número total de empleados en la base de datos.
+     *
+     * Nota: actualmente es equivalente a contarActivos().
+     *
+     * @return int Total de empleados.
+     */
     public static function contarTotal()
     {
         global $conn;
@@ -193,6 +240,11 @@ class Empleado
         return $row['total'];
     }
 
+    /**
+     * Obtiene los empleados que están marcados como inactivos.
+     *
+     * @return mysqli_result Resultado de la consulta con empleados inactivos.
+     */
     public static function getInactivos()
     {
         global $conn;
@@ -200,8 +252,14 @@ class Empleado
         return $conn->query("SELECT * FROM empleados WHERE estatus='inactivo'");
     }
 
-    public static function getCompanias() {
-    global $conn;
+    /**
+     * Obtiene la lista de compañías distintas de empleados activos.
+     *
+     * @return mysqli_result Resultado con las compañías activas ordenadas alfabéticamente.
+     */
+    public static function getCompanias()
+    {
+        global $conn;
 
     $result = $conn->query("
         SELECT DISTINCT compania 

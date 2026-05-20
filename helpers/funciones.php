@@ -1,4 +1,12 @@
 <?php
+
+/**
+ * Convierte un número a su representación en letras.
+ *
+ * @param float $numero Número a convertir.
+ * @return string Número en letras.
+ */
+
 function numeroALetras($numero)
 {
 
@@ -21,6 +29,13 @@ function numeroALetras($numero)
 }
 
 /********************************************************** */
+
+/**
+ * Formatea una fecha en formato "día de mes del año".
+ *
+ * @param string $fecha Fecha a formatear.
+ * @return string Fecha formateada.
+ */
 
 function formatearFechaContrato($fecha)
 {
@@ -49,6 +64,12 @@ function formatearFechaContrato($fecha)
     return $dia . ' de ' . $meses[$mes] . ' del ' . $anio;
 }
 
+/**
+ * Genera un folio para un empleado.
+ *
+ * @param int $total Número total de empleados.
+ * @return string Folio generado.
+ */
 function generarFolio($total)
 {
     $numero = $total + 1;
@@ -56,6 +77,12 @@ function generarFolio($total)
     return str_pad($numero, 2, "0", STR_PAD_LEFT);
 }
 
+/**
+ * Convierte un texto a mayúsculas.
+ *
+ * @param string $texto Texto a convertir.
+ * @return string Texto en mayúsculas.
+ */
 function mayusculas($texto)
 {
     return mb_strtoupper($texto, 'UTF-8');

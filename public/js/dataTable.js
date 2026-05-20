@@ -1,7 +1,12 @@
+/**
+ * Archivo JavaScript para inicializar DataTables en las tablas de empleados, contratos y bajas
+ * y para agregar funcionalidades de búsqueda y filtrado por compañía en la tabla de empleados.
+ * También se encarga de numerar las filas de manera dinámica en función de la paginación y el ordenamiento.
+ */
 $(document).ready(function () {
 
     var table = $('#tablaEmpleados').DataTable({
-        pageLength: 15,
+        pageLength: 20, // Número de filas por página
         searching: true,
         scrollX: false,
         autoWidth: false,
@@ -52,7 +57,7 @@ $(document).ready(function () {
 $(document).ready(function() {
 
                 var table = $('#tablaContratos').DataTable({
-                    pageLength: 15,
+                    pageLength: 20,
                     searching: true,
                     scrollX: false,
                     autoWidth: false,
