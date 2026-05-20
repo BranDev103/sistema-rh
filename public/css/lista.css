@@ -47,14 +47,14 @@ h2 {
   text-align: left;
 }
 
-#filtroCompania{
+#filtroCompania {
   padding: 6px 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
   cursor: pointer;
 }
 
-#filtroCompania:hover{
+#filtroCompania:hover {
   border: 1px solid #0056b3;
 }
 
@@ -72,63 +72,49 @@ table {
     rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
 
-
-
 thead th:nth-child(1) {
-
   width: 1%;
 }
 
 thead th:nth-child(2) {
-
   width: 10%;
 }
 
 thead th:nth-child(3) {
-
   width: 15%;
 }
 
 thead th:nth-child(4) {
-
   width: 8%;
 }
 
 thead th:nth-child(5) {
-
   width: 5%;
 }
 
 thead th:nth-child(6) {
-
   width: 4%;
 }
 
 thead th:nth-child(7) {
-
   width: 4%;
 }
 
 thead th:nth-child(8) {
-
   width: 7%;
 }
 
 thead th:nth-child(9) {
-
   width: 12%;
 }
 
 thead th:nth-child(10) {
-
   width: 6%;
 }
 
 thead th:nth-child(11) {
-
   width: 4%;
 }
-
 
 th,
 td {
@@ -143,7 +129,7 @@ th {
 td {
   border: 1px solid rgb(0, 0, 0);
   font-size: 0.8em;
-  cursor:default;
+  cursor: default;
 }
 
 tbody td {
@@ -235,20 +221,20 @@ tbody tr:nth-child(even) {
 /****************************************************************************/
 
 td.selected-cell {
-    background-color: #b3d7ff !important;
+  background-color: #b3d7ff !important;
 }
 
-.descarga{
+.descarga {
   text-decoration: none;
   color: #000000;
 }
 
-.descarga:hover{
+.descarga:hover {
   color: #0d6efd;
   text-decoration: underline;
 }
 
 table.dataTable thead th {
-    text-align: center !important;
-    vertical-align: middle;
+  text-align: center !important;
+  vertical-align: middle;
 }

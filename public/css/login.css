@@ -31,13 +31,15 @@ header img {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
 
   font-weight: bolder;
   font-size: 1em;
   background-color: rgb(255, 255, 255);
   padding: 30px;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  box-shadow:
+    rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
 
   border-radius: 10px;
 
@@ -90,7 +92,7 @@ header img {
   border-bottom: 2px solid #007bff85;
   margin: 10px 0;
   color: black;
-  font-size: .8em;
+  font-size: 0.8em;
   font-weight: 500;
   box-sizing: border-box;
   padding-left: 30px;
@@ -115,7 +117,7 @@ header img {
   background-color: #007bff;
   height: 30px;
   color: white;
-  font-size: .8em;
+  font-size: 0.8em;
   font-weight: 500;
   letter-spacing: 1px;
   margin: 10px;
@@ -128,7 +130,7 @@ header img {
 
 .forgotLink {
   z-index: 2;
-  font-size: .7em;
+  font-size: 0.7em;
   font-weight: 500;
   color: rgb(44, 24, 128);
   text-decoration: none;
@@ -188,7 +190,8 @@ header img {
 .three-body__dot:nth-child(2)::after {
   bottom: 0;
   left: 0;
-  animation: wobble1 var(--uib-speed) infinite calc(var(--uib-speed) * -0.15) ease-in-out;
+  animation: wobble1 var(--uib-speed) infinite calc(var(--uib-speed) * -0.15)
+    ease-in-out;
 }
 
 .three-body__dot:nth-child(3) {
@@ -214,7 +217,6 @@ header img {
 }
 
 @keyframes wobble1 {
-
   0%,
   100% {
     transform: translateY(0%) scale(1);
@@ -228,7 +230,6 @@ header img {
 }
 
 @keyframes wobble2 {
-
   0%,
   100% {
     transform: translateY(0%) scale(1);
