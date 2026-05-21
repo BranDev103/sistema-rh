@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This file is part of PHPWord - A pure PHP library for reading and writing
  * word processing documents.
@@ -19,7 +18,6 @@
 namespace PhpOffice\PhpWord\Style;
 
 use PhpOffice\PhpWord\ComplexType\TblWidth as TblWidthComplexType;
-use PhpOffice\PhpWord\Settings;
 use PhpOffice\PhpWord\SimpleType\Jc;
 use PhpOffice\PhpWord\SimpleType\JcTable;
 use PhpOffice\PhpWord\SimpleType\TblWidth;
@@ -50,7 +48,7 @@ class Table extends Border
     /**
      * Style for first row.
      *
-     * @var Table
+     * @var \PhpOffice\PhpWord\Style\Table
      */
     private $firstRowStyle;
 
@@ -113,7 +111,7 @@ class Table extends Border
     /**
      * Shading.
      *
-     * @var Shading
+     * @var \PhpOffice\PhpWord\Style\Shading
      */
     private $shading;
 
@@ -133,9 +131,9 @@ class Table extends Border
     private $unit = TblWidth::AUTO;
 
     /**
-     * @var null|float|int cell spacing value
+     * @var float|int cell spacing value
      */
-    private $cellSpacing;
+    protected $cellSpacing;
 
     /**
      * @var string Table Layout
@@ -145,7 +143,7 @@ class Table extends Border
     /**
      * Position.
      *
-     * @var ?TablePosition
+     * @var \PhpOffice\PhpWord\Style\TablePosition
      */
     private $position;
 
@@ -164,51 +162,41 @@ class Table extends Border
      *
      * @see  http://www.datypic.com/sc/ooxml/e-w_bidiVisual-1.html
      *
-     * @var ?bool
+     * @var bool
      */
-    private $bidiVisual;
+    private $bidiVisual = false;
 
     /**
      * Create new table style.
+     *
+     * @param mixed $tableStyle
+     * @param mixed $firstRowStyle
      */
-    public function __construct(?array $tableStyle = null, ?array $firstRowStyle = null)
+    public function __construct($tableStyle = null, $firstRowStyle = null)
     {
         // Clone first row from table style, but with certain properties disabled
-        if ($firstRowStyle !== null) {
+        if ($firstRowStyle !== null && is_array($firstRowStyle)) {
             $this->firstRowStyle = clone $this;
             $this->firstRowStyle->isFirstRow = true;
-            unset(
-                $this->firstRowStyle->firstRowStyle,
-                $this->firstRowStyle->borderInsideHSize,
-                $this->firstRowStyle->borderInsideHColor,
-                $this->firstRowStyle->borderInsideVSize,
-                $this->firstRowStyle->borderInsideVColor,
-                $this->firstRowStyle->cellMarginTop,
-                $this->firstRowStyle->cellMarginLeft,
-                $this->firstRowStyle->cellMarginRight,
-                $this->firstRowStyle->cellMarginBottom,
-                $this->firstRowStyle->cellSpacing
-            );
+            unset($this->firstRowStyle->firstRowStyle, $this->firstRowStyle->borderInsideHSize, $this->firstRowStyle->borderInsideHColor, $this->firstRowStyle->borderInsideVSize, $this->firstRowStyle->borderInsideVColor, $this->firstRowStyle->cellMarginTop, $this->firstRowStyle->cellMarginLeft, $this->firstRowStyle->cellMarginRight, $this->firstRowStyle->cellMarginBottom, $this->firstRowStyle->cellSpacing);
             $this->firstRowStyle->setStyleByArray($firstRowStyle);
         }
 
-        if ($tableStyle !== null) {
+        if ($tableStyle !== null && is_array($tableStyle)) {
             $this->setStyleByArray($tableStyle);
         }
     }
 
     /**
-     * @param null|float|int $cellSpacing
+     * @param float|int $cellSpacing
      */
-    public function setCellSpacing($cellSpacing = null): self
+    public function setCellSpacing($cellSpacing = null): void
     {
         $this->cellSpacing = $cellSpacing;
-
-        return $this;
     }
 
     /**
-     * @return null|float|int
+     * @return float|int
      */
     public function getCellSpacing()
     {
@@ -218,7 +206,7 @@ class Table extends Border
     /**
      * Set first row.
      *
-     * @return Table
+     * @return \PhpOffice\PhpWord\Style\Table
      */
     public function getFirstRow()
     {
@@ -228,7 +216,7 @@ class Table extends Border
     /**
      * Get background.
      *
-     * @return ?string
+     * @return string
      */
     public function getBgColor()
     {
@@ -548,7 +536,7 @@ class Table extends Border
     /**
      * Get shading.
      *
-     * @return Shading
+     * @return \PhpOffice\PhpWord\Style\Shading
      */
     public function getShading()
     {
@@ -716,7 +704,7 @@ class Table extends Border
     /**
      * Get position.
      *
-     * @return ?TablePosition
+     * @return \PhpOffice\PhpWord\Style\TablePosition
      */
     public function getPosition()
     {
@@ -738,7 +726,7 @@ class Table extends Border
     }
 
     /**
-     * @return ?TblWidthComplexType
+     * @return TblWidthComplexType
      */
     public function getIndent()
     {
@@ -780,17 +768,17 @@ class Table extends Border
     /**
      * Get bidiVisual.
      *
-     * @return ?bool
+     * @return bool
      */
     public function isBidiVisual()
     {
-        return $this->bidiVisual ?? Settings::isDefaultRtl();
+        return $this->bidiVisual;
     }
 
     /**
      * Set bidiVisual.
      *
-     * @param ?bool $bidi
+     * @param bool $bidi
      *            Set to true to visually present table as Right to Left
      *
      * @return self

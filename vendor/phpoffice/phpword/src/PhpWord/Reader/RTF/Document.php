@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This file is part of PHPWord - A pure PHP library for reading and writing
  * word processing documents.
@@ -31,7 +30,7 @@ use PhpOffice\PhpWord\SimpleType\Jc;
  *
  * @since 0.11.0
  *
- * @SuppressWarnings("PHPMD.UnusedPrivateMethod")
+ * @SuppressWarnings(PHPMD.UnusedPrivateMethod)
  */
 class Document
 {
@@ -43,7 +42,7 @@ class Document
     /**
      * PhpWord object.
      *
-     * @var PhpWord
+     * @var \PhpOffice\PhpWord\PhpWord
      */
     private $phpWord;
 

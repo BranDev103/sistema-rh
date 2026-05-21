@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This file is part of PHPWord - A pure PHP library for reading and writing
  * word processing documents.
@@ -69,8 +68,10 @@ class Numbering extends AbstractPart
                 $xmlWriter->writeAttribute('w:val', $style->getType());
                 $xmlWriter->endElement(); // w:multiLevelType
 
-                foreach ($levels as $level) {
-                    $this->writeLevel($xmlWriter, $level);
+                if (is_array($levels)) {
+                    foreach ($levels as $level) {
+                        $this->writeLevel($xmlWriter, $level);
+                    }
                 }
                 $xmlWriter->endElement(); // w:abstractNum
             }
@@ -189,6 +190,6 @@ class Numbering extends AbstractPart
      */
     private function getRandomHexNumber($length = 8)
     {
-        return strtoupper((string) substr(md5((string) mt_rand()), 0, $length));
+        return strtoupper(substr(md5(mt_rand()), 0, $length));
     }
 }

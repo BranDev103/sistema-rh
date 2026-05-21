@@ -1,6 +1,6 @@
 {
     "require": {
-        "phpoffice/phpword": "dev-master",
+        "phpoffice/phpword": "^1.1",
         "dompdf/dompdf": "^3.1"
     }
 }

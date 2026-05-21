@@ -35,6 +35,12 @@ $(document).ready(function () {
         table.column(1).search(valor).draw();
     });
 
+    $('#filtroObra').on('change', function () {
+        var valor = $(this).val();
+
+        table.column(8).search(valor).draw();
+    });
+
 
     table.on('order.dt search.dt draw.dt', function () {
         let pageInfo = table.page.info();

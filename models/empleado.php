@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Modelo de Empleado - Sistema de Recursos Humanos
  *
@@ -152,7 +153,7 @@ class Empleado
             $data['fecha_ingreso'],
             $data['nombre_obra'],
             $data['pago']
-           
+
         );
 
         if (!$stmt->execute()) {
@@ -353,16 +354,31 @@ class Empleado
      * @access public
      * @return mysqli_result Objeto resultado con las compañías DISTINTAS ordenadas ascendentemente
      */
-    public static function getCompanias() {
-    global $conn;
+    public static function getCompanias()
+    {
+        global $conn;
 
-    $result = $conn->query("
+        $result = $conn->query("
         SELECT DISTINCT compania 
         FROM empleados 
         WHERE estatus = 'activo'
         ORDER BY compania ASC
     ");
 
-    return $result;
-}
+        return $result;
+    }
+
+    public static function getObras()
+    {
+        global $conn;
+
+        $result = $conn->query("
+        SELECT DISTINCT nombre_obra 
+        FROM empleados 
+        WHERE estatus = 'activo'
+        ORDER BY nombre_obra ASC
+    ");
+
+        return $result;
+    }
 }

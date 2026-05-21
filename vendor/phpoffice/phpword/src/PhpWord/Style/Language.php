@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This file is part of PHPWord - A pure PHP library for reading and writing
  * word processing documents.
@@ -101,28 +100,32 @@ final class Language extends AbstractStyle
     /**
      * Latin Language.
      *
-     * @var null|string
+     * @var string
      */
     private $latin;
 
     /**
      * East Asian Language.
      *
-     * @var null|string
+     * @var string
      */
     private $eastAsia;
 
     /**
      * Complex Script Language.
      *
-     * @var null|string
+     * @var string
      */
     private $bidirectional;
 
     /**
      * Constructor.
+     *
+     * @param null|string $latin
+     * @param null|string $eastAsia
+     * @param null|string $bidirectional
      */
-    public function __construct(?string $latin = null, ?string $eastAsia = null, ?string $bidirectional = null)
+    public function __construct($latin = null, $eastAsia = null, $bidirectional = null)
     {
         if (!empty($latin)) {
             $this->setLatin($latin);
@@ -140,8 +143,10 @@ final class Language extends AbstractStyle
      *
      * @param string $latin
      *            The value for the latin language
+     *
+     * @return self
      */
-    public function setLatin(?string $latin): self
+    public function setLatin($latin)
     {
         $this->latin = $this->validateLocale($latin);
 
@@ -150,8 +155,10 @@ final class Language extends AbstractStyle
 
     /**
      * Get the Latin Language.
+     *
+     * @return null|string
      */
-    public function getLatin(): ?string
+    public function getLatin()
     {
         return $this->latin;
     }
@@ -249,9 +256,7 @@ final class Language extends AbstractStyle
         if ($locale !== null && strlen($locale) === 2) {
             return strtolower($locale) . '-' . strtoupper($locale);
         }
-        if ($locale === 'und') {
-            return 'en-EN';
-        }
+
         if ($locale !== null && $locale !== 'zxx' && strstr($locale, '-') === false) {
             throw new InvalidArgumentException($locale . ' is not a valid language code');
         }

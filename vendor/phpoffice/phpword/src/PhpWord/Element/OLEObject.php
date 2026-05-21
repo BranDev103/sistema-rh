@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This file is part of PHPWord - A pure PHP library for reading and writing
  * word processing documents.
@@ -36,7 +35,7 @@ class OLEObject extends AbstractElement
     /**
      * Image Style.
      *
-     * @var ?ImageStyle
+     * @var \PhpOffice\PhpWord\Style\Image
      */
     private $style;
 
@@ -70,16 +69,17 @@ class OLEObject extends AbstractElement
     public function __construct($source, $style = null)
     {
         $supportedTypes = ['xls', 'doc', 'ppt', 'xlsx', 'docx', 'pptx'];
-        $pathInfoExtension = pathinfo($source, PATHINFO_EXTENSION);
+        $pathInfo = pathinfo($source);
 
-        if (file_exists($source) && in_array($pathInfoExtension, $supportedTypes)) {
-            if (strlen($pathInfoExtension) == 4 && strtolower(substr($pathInfoExtension, -1)) == 'x') {
-                $pathInfoExtension = substr($pathInfoExtension, 0, -1);
+        if (file_exists($source) && in_array($pathInfo['extension'], $supportedTypes)) {
+            $ext = $pathInfo['extension'];
+            if (strlen($ext) == 4 && strtolower(substr($ext, -1)) == 'x') {
+                $ext = substr($ext, 0, -1);
             }
 
             $this->source = $source;
             $this->style = $this->setNewStyle(new ImageStyle(), $style, true);
-            $this->icon = realpath(__DIR__ . "/../resources/{$pathInfoExtension}.png");
+            $this->icon = realpath(__DIR__ . "/../resources/{$ext}.png");
 
             return;
         }
@@ -100,7 +100,7 @@ class OLEObject extends AbstractElement
     /**
      * Get object style.
      *
-     * @return ?ImageStyle
+     * @return \PhpOffice\PhpWord\Style\Image
      */
     public function getStyle()
     {

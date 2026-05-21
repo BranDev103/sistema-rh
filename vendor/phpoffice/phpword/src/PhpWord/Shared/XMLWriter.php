@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This file is part of PHPWord - A pure PHP library for reading and writing
  * word processing documents.
@@ -19,6 +18,7 @@
 namespace PhpOffice\PhpWord\Shared;
 
 use Exception;
+use ReturnTypeWillChange;
 
 /**
  * XMLWriter.
@@ -172,8 +172,11 @@ class XMLWriter extends \XMLWriter
     /**
      * @param string $name
      * @param mixed $value
+     *
+     * @return bool
      */
-    public function writeAttribute($name, $value): bool
+    #[ReturnTypeWillChange]
+    public function writeAttribute($name, $value)
     {
         if (is_float($value)) {
             $value = json_encode($value);

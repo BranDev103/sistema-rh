@@ -6,6 +6,7 @@ require_once __DIR__ . '/../../helpers/funciones.php';
 verificarSesion();
 $companias = Empleado::getCompanias();
 $empleados = Empleado::getAll();
+$obras = Empleado::getObras();
 ?>
 
 <?php include("../layouts/header.php"); ?>
@@ -24,10 +25,11 @@ $empleados = Empleado::getAll();
 
 <body>
     <div class="top-bar">
-        <h2>Lista de Trabajadores</h2>
+        <h2>TRABAJADORES</h2>
         <div class="acciones">
             <a class="btn_registro bi bi-plus-square" href=" create.php"> Nuevo Empleado</a>
             <input type="text" id="busqueda" placeholder="Buscar...">
+
             <select id="filtroCompania">
                 <option value="">Todas las compañías</option>
                 <?php while ($comp = $companias->fetch_assoc()): ?>
@@ -36,6 +38,16 @@ $empleados = Empleado::getAll();
                     </option>
                 <?php endwhile; ?>
             </select>
+
+            <select id="filtroObra">
+                <option value="">Todas las obras</option>
+                <?php while ($obr = $obras->fetch_assoc()): ?>
+                    <option value="<?= $obr['nombre_obra'] ?>">
+                        <?= $obr['nombre_obra'] ?>
+                    </option>
+                <?php endwhile; ?>
+            </select>
+            
         </div>
     </div>
 

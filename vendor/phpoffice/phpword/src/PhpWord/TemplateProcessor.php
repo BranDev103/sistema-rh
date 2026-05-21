@@ -27,7 +27,6 @@ use PhpOffice\PhpWord\Exception\Exception;
 use PhpOffice\PhpWord\Shared\Text;
 use PhpOffice\PhpWord\Shared\XMLWriter;
 use PhpOffice\PhpWord\Shared\ZipArchive;
-use Throwable;
 use XSLTProcessor;
 
 class TemplateProcessor
@@ -133,22 +132,7 @@ class TemplateProcessor
 
         $this->tempDocumentMainPart = $this->readPartWithRels($this->getMainPartName());
         $this->tempDocumentSettingsPart = $this->readPartWithRels($this->getSettingsPartName());
-        $tempDocumentContentTypes = $this->zipClass->getFromName($this->getDocumentContentTypesName());
-        if (is_string($tempDocumentContentTypes)) {
-            $this->tempDocumentContentTypes = $tempDocumentContentTypes;
-        }
-    }
-
-    public function __destruct()
-    {
-        // ZipClass
-        if ($this->zipClass) {
-            try {
-                $this->zipClass->close();
-            } catch (Throwable $e) {
-                // Nothing to do here.
-            }
-        }
+        $this->tempDocumentContentTypes = $this->zipClass->getFromName($this->getDocumentContentTypesName());
     }
 
     /**
@@ -157,7 +141,7 @@ class TemplateProcessor
      * To replace an image: $templateProcessor->zip()->AddFromString("word/media/image1.jpg", file_get_contents($file));<br>
      * To read a file: $templateProcessor->zip()->getFromName("word/media/image1.jpg");
      *
-     * @return ZipArchive
+     * @return \PhpOffice\PhpWord\Shared\ZipArchive
      */
     public function zip()
     {
@@ -266,17 +250,22 @@ class TemplateProcessor
     }
 
     /**
-     * @param ?string $subject
+     * @param string $subject
      *
      * @return string
      */
     protected static function ensureUtf8Encoded($subject)
     {
-        return (null !== $subject) ? Text::toUTF8($subject) : '';
+        if (!Text::isUTF8($subject) && null !== $subject) {
+            $subject = utf8_encode($subject);
+        }
+
+        return (null !== $subject) ? $subject : '';
     }
 
     /**
      * @param string $search
+     * @param \PhpOffice\PhpWord\Element\AbstractElement $complexType
      */
     public function setComplexValue($search, Element\AbstractElement $complexType): void
     {
@@ -284,7 +273,7 @@ class TemplateProcessor
         $objectClass = 'PhpOffice\\PhpWord\\Writer\\Word2007\\Element\\' . $elementName;
 
         $xmlWriter = new XMLWriter();
-        /** @var Writer\Word2007\Element\AbstractElement $elementWriter */
+        /** @var \PhpOffice\PhpWord\Writer\Word2007\Element\AbstractElement $elementWriter */
         $elementWriter = new $objectClass($xmlWriter, $complexType, true);
         $elementWriter->write();
 
@@ -304,6 +293,7 @@ class TemplateProcessor
 
     /**
      * @param string $search
+     * @param \PhpOffice\PhpWord\Element\AbstractElement $complexType
      */
     public function setComplexBlock($search, Element\AbstractElement $complexType): void
     {
@@ -311,7 +301,7 @@ class TemplateProcessor
         $objectClass = 'PhpOffice\\PhpWord\\Writer\\Word2007\\Element\\' . $elementName;
 
         $xmlWriter = new XMLWriter();
-        /** @var Writer\Word2007\Element\AbstractElement $elementWriter */
+        /** @var \PhpOffice\PhpWord\Writer\Word2007\Element\AbstractElement $elementWriter */
         $elementWriter = new $objectClass($xmlWriter, $complexType, false);
         $elementWriter->write();
 
@@ -319,8 +309,8 @@ class TemplateProcessor
     }
 
     /**
-     * @param array<string>|string $search
-     * @param null|array<string>|bool|float|int|string $replace
+     * @param mixed $search
+     * @param mixed $replace
      * @param int $limit
      */
     public function setValue($search, $replace, $limit = self::MAXIMUM_REPLACEMENTS_DEFAULT): void
@@ -340,21 +330,12 @@ class TemplateProcessor
             }
             unset($item);
         } else {
-            $replace = static::ensureUtf8Encoded(null === $replace ? null : (string) $replace);
+            $replace = static::ensureUtf8Encoded($replace);
         }
 
         if (Settings::isOutputEscapingEnabled()) {
             $xmlEscaper = new Xml();
             $replace = $xmlEscaper->escape($replace);
-        }
-
-        // convert carriage returns
-        if (is_array($replace)) {
-            foreach ($replace as &$item) {
-                $item = $this->replaceCarriageReturns($item);
-            }
-        } else {
-            $replace = $this->replaceCarriageReturns($replace);
         }
 
         $this->tempDocumentHeaders = $this->setValueForPart($search, $replace, $this->tempDocumentHeaders, $limit);
@@ -365,32 +346,11 @@ class TemplateProcessor
     /**
      * Set values from a one-dimensional array of "variable => value"-pairs.
      */
-    public function setValues(array $values, int $limit = self::MAXIMUM_REPLACEMENTS_DEFAULT): void
+    public function setValues(array $values): void
     {
         foreach ($values as $macro => $replace) {
-            $this->setValue($macro, $replace, $limit);
+            $this->setValue($macro, $replace);
         }
-    }
-
-    public function setCheckbox(string $search, bool $checked): void
-    {
-        $search = static::ensureMacroCompleted($search);
-        $blockType = 'w:sdt';
-
-        $where = $this->findContainingXmlBlockForMacro($search, $blockType);
-        if (!is_array($where)) {
-            return;
-        }
-
-        $block = $this->getSlice($where['start'], $where['end']);
-
-        $val = $checked ? '1' : '0';
-        $block = preg_replace('/(<w14:checked w14:val=)".*?"(\/>)/', '$1"' . $val . '"$2', $block);
-
-        $text = $checked ? '☒' : '☐';
-        $block = preg_replace('/(<w:t>).*?(<\/w:t>)/', '$1' . $text . '$2', $block);
-
-        $this->replaceXmlBlock($search, $block, $blockType);
     }
 
     /**
@@ -409,7 +369,7 @@ class TemplateProcessor
         $filename = "charts/chart{$rId}.xml";
 
         // Get the part writer
-        $writerPart = new Writer\Word2007\Part\Chart();
+        $writerPart = new \PhpOffice\PhpWord\Writer\Word2007\Part\Chart();
         $writerPart->setElement($chart);
 
         // ContentTypes.xml
@@ -477,7 +437,7 @@ class TemplateProcessor
         if (null === $value && isset($inlineValue)) {
             $value = $inlineValue;
         }
-        if (!preg_match('/^([0-9\.]*(cm|mm|in|pt|pc|px|%|em|ex|)|auto)$/i', $value ?? '')) {
+        if (!preg_match('/^([0-9]*(cm|mm|in|pt|pc|px|%|em|ex|)|auto)$/i', $value ?? '')) {
             $value = null;
         }
         if (null === $value) {
@@ -502,22 +462,20 @@ class TemplateProcessor
             $widthFloat = $heightFloat * $imageRatio;
             $matches = [];
             preg_match('/\\d([a-z%]+)$/', $height, $matches);
-            $width = $widthFloat . (!empty($matches) ? $matches[1] : 'px');
+            $width = $widthFloat . $matches[1];
         } elseif ($height === '') { // defined height is empty
             $widthFloat = (float) $width;
             $heightFloat = $widthFloat / $imageRatio;
             $matches = [];
             preg_match('/\\d([a-z%]+)$/', $width, $matches);
-            $height = $heightFloat . (!empty($matches) ? $matches[1] : 'px');
+            $height = $heightFloat . $matches[1];
         } else { // we have defined size, but we need also check it aspect ratio
             $widthMatches = [];
             preg_match('/\\d([a-z%]+)$/', $width, $widthMatches);
             $heightMatches = [];
             preg_match('/\\d([a-z%]+)$/', $height, $heightMatches);
             // try to fix only if dimensions are same
-            if (!empty($widthMatches)
-                && !empty($heightMatches)
-                && $widthMatches[1] == $heightMatches[1]) {
+            if ($widthMatches[1] == $heightMatches[1]) {
                 $dimention = $widthMatches[1];
                 $widthFloat = (float) $width;
                 $heightFloat = (float) $height;
@@ -667,13 +625,13 @@ class TemplateProcessor
         foreach (array_keys($this->tempDocumentHeaders) as $headerIndex) {
             $searchParts[$this->getHeaderName($headerIndex)] = &$this->tempDocumentHeaders[$headerIndex];
         }
-        foreach (array_keys($this->tempDocumentFooters) as $footerIndex) {
-            $searchParts[$this->getFooterName($footerIndex)] = &$this->tempDocumentFooters[$footerIndex];
+        foreach (array_keys($this->tempDocumentFooters) as $headerIndex) {
+            $searchParts[$this->getFooterName($headerIndex)] = &$this->tempDocumentFooters[$headerIndex];
         }
 
         // define templates
         // result can be verified via "Open XML SDK 2.5 Productivity Tool" (http://www.microsoft.com/en-us/download/details.aspx?id=30425)
-        $imgTpl = '<w:pict><v:shape type="#_x0000_t75" style="width:{WIDTH};height:{HEIGHT}" stroked="f" filled="f"><v:imagedata r:id="{RID}" o:title=""/></v:shape></w:pict>';
+        $imgTpl = '<w:pict><v:shape type="#_x0000_t75" style="width:{WIDTH};height:{HEIGHT}" stroked="f"><v:imagedata r:id="{RID}" o:title=""/></v:shape></w:pict>';
 
         $i = 0;
         foreach ($searchParts as $partFileName => &$partContent) {
@@ -681,7 +639,7 @@ class TemplateProcessor
 
             foreach ($searchReplace as $searchString => $replaceImage) {
                 $varsToReplace = array_filter($partVariables, function ($partVar) use ($searchString) {
-                    return ($partVar == $searchString) || preg_match('/^' . preg_quote($searchString, '/') . ':/', $partVar);
+                    return ($partVar == $searchString) || preg_match('/^' . preg_quote($searchString) . ':/', $partVar);
                 });
 
                 foreach ($varsToReplace as $varNameWithArgs) {
@@ -700,7 +658,7 @@ class TemplateProcessor
                     // replace variable
                     $varNameWithArgsFixed = static::ensureMacroCompleted($varNameWithArgs);
                     $matches = [];
-                    if (preg_match('/(<[^<]+>)([^<]*)(' . preg_quote($varNameWithArgsFixed, '/') . ')([^>]*)(<[^>]+>)/Uu', $partContent, $matches)) {
+                    if (preg_match('/(<[^<]+>)([^<]*)(' . preg_quote($varNameWithArgsFixed) . ')([^>]*)(<[^>]+>)/Uu', $partContent, $matches)) {
                         $wholeTag = $matches[0];
                         array_shift($matches);
                         [$openTag, $prefix, , $postfix, $closeTag] = $matches;
@@ -810,8 +768,8 @@ class TemplateProcessor
      */
     public function deleteRow(string $search): void
     {
-        if (self::$macroOpeningChars !== substr($search, 0, 2) && self::$macroClosingChars !== substr($search, -1)) {
-            $search = self::$macroOpeningChars . $search . self::$macroClosingChars;
+        if ('${' !== substr($search, 0, 2) && '}' !== substr($search, -1)) {
+            $search = '${' . $search . '}';
         }
 
         $tagPos = strpos($this->tempDocumentMainPart, $search);
@@ -1081,12 +1039,12 @@ class TemplateProcessor
     /**
      * Find and replace macros in the given XML section.
      *
-     * @param array<string>|string $search
-     * @param array<string>|string $replace
+     * @param mixed $search
+     * @param mixed $replace
      * @param array<int, string>|string $documentPartXML
      * @param int $limit
      *
-     * @return ($documentPartXML is string ? string : array<string>)
+     * @return string
      */
     protected function setValueForPart($search, $replace, $documentPartXML, $limit)
     {
@@ -1292,7 +1250,7 @@ class TemplateProcessor
      * @param int $count
      * @param string $xmlBlock
      *
-     * @return array<string>
+     * @return string
      */
     protected function indexClonedVariables($count, $xmlBlock)
     {
@@ -1305,14 +1263,6 @@ class TemplateProcessor
         }
 
         return $results;
-    }
-
-    /**
-     * Replace carriage returns with xml.
-     */
-    public function replaceCarriageReturns(string $string): string
-    {
-        return str_replace(["\r\n", "\r", "\n"], '</w:t><w:br/><w:t>', $string);
     }
 
     /**
@@ -1344,7 +1294,7 @@ class TemplateProcessor
      * @param string $block New block content
      * @param string $blockType XML tag type of block
      *
-     * @return TemplateProcessor Fluent interface
+     * @return \PhpOffice\PhpWord\TemplateProcessor Fluent interface
      */
     public function replaceXmlBlock($macro, $block, $blockType = 'w:p')
     {
@@ -1498,10 +1448,5 @@ class TemplateProcessor
     {
         self::$macroOpeningChars = $macroOpeningChars;
         self::$macroClosingChars = $macroClosingChars;
-    }
-
-    public function getTempDocumentFilename(): string
-    {
-        return $this->tempDocumentFilename;
     }
 }
