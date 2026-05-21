@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../../models/empleado.php';
 require_once __DIR__ . '/../../helpers/auth.php';
 require_once __DIR__ . '/../../helpers/funciones.php';
-require_once __DIR__ . '/../../helpers/contrato_pdf.php';
+require_once __DIR__ . '/../../helpers/stylespdf/contrato.php';
 verificarSesion();
 
 if (!isset($_GET['id'])) {

@@ -18,7 +18,6 @@ if (isset($_SESSION['ultima_actividad'])) {
         exit;
 
     }
-    
 }
 
 $_SESSION['ultima_actividad'] = time();
