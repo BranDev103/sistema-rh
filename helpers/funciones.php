@@ -1,4 +1,16 @@
 <?php
+
+/**
+ * Contiene funciones auxiliares para el sistema de recursos humanos, como formateo de fechas, conversión de números a letras, generación de folios y manipulación de texto.
+ * Estas funciones son utilizadas en diferentes partes del sistema para mantener el código organizado y reutilizable.
+ */
+
+/**
+ * Convierte un número a letras
+ *
+ * @param float $numero Número a convertir
+ * @return string Número en letras
+ */
 function numeroALetras($numero)
 {
 
@@ -6,7 +18,7 @@ function numeroALetras($numero)
         return $numero . " PESOS";
     }
 
-    $formatter = new NumberFormatter("es", NumberFormatter::SPELLOUT);
+    $formatter = new NumberFormatter("es", NumberFormatter::SPELLOUT);//Crear instancia de NumberFormatter para español
 
 
     $partes = explode('.', number_format($numero, 2, '.', ''));
@@ -21,6 +33,13 @@ function numeroALetras($numero)
 }
 
 /********************************************************** */
+
+/**
+ * Formatea una fecha en el formato "día de mes del año" en español.
+ *
+ * @param string $fecha Fecha en formato "Y-m-d"
+ * @return string Fecha formateada en español
+ */
 
 function formatearFechaContrato($fecha)
 {
@@ -49,6 +68,12 @@ function formatearFechaContrato($fecha)
     return $dia . ' de ' . $meses[$mes] . ' del ' . $anio;
 }
 
+/**
+ * Genera un folio con un formato específico
+ *
+ * @param int $total Total de registros existentes
+ * @return string Folio generado
+ */
 function generarFolio($total)
 {
     $numero = $total + 1;
@@ -56,6 +81,12 @@ function generarFolio($total)
     return str_pad($numero, 2, "0", STR_PAD_LEFT);
 }
 
+/**
+ * Convierte un texto a mayúsculas
+ *
+ * @param string $texto Texto a convertir
+ * @return string Texto en mayúsculas
+ */
 function mayusculas($texto)
 {
     return mb_strtoupper($texto, 'UTF-8');

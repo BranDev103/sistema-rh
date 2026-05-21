@@ -1,4 +1,5 @@
-<?php //Conexión con la base de datos
+<?php 
+//Conexión con la base de datos
 
 //Datos de acceso
 $host = "localhost";

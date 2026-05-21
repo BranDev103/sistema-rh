@@ -1,4 +1,8 @@
 <?php
+/**
+ * Maneja la generación de contratos laborales en formato Word utilizando plantillas.
+ * Utiliza la biblioteca PhpWord para procesar plantillas y generar documentos personalizados.
+ */
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/funciones.php';
 
@@ -18,7 +22,10 @@ function generarContrato($empleado)
     //Crear instancia
     $template = new TemplateProcessor($templatePath);
 
-    //Reemplazar datos
+    /**
+     * Reemplazar marcadores en la plantilla con los datos del empleado. 
+     * Asegúrate de que los nombres de los marcadores en la plantilla coincidan con las claves del array $empleado.
+     */
     $template->setValue('nombre', mayusculas($empleado['nombre']));
     $template->setValue('puesto', mayusculas($empleado['puesto']));
     $template->setValue('compania', mayusculas($empleado['compania']));
