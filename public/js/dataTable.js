@@ -41,7 +41,6 @@ $(document).ready(function () {
         table.column(8).search(valor).draw();
     });
 
-
     table.on('order.dt search.dt draw.dt', function () {
         let pageInfo = table.page.info();
 
