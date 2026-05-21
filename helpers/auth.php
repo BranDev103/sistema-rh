@@ -26,6 +26,10 @@ if (isset($_SESSION['ultima_actividad'])) {//Verificar inactividad
     }
 }
 
+/**
+ * Funciones para verificar sesión y rol de usuario.
+ */
+
 $_SESSION['ultima_actividad'] = time();
 
 function verificarSesion()//Verificar si el usuario ha iniciado sesión
