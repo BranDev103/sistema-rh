@@ -14,7 +14,7 @@ $empleados = Empleado::getAll();
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 
 <?php include("../layouts/header.php"); ?>
-<h2>Lista de contratos</h2>
+<h2>Lista de Contratos</h2>
 <a class="btn bi bi-arrow-left-square" href="../empleados/index.php"> Volver</a>
 
 <div class="top-bar">

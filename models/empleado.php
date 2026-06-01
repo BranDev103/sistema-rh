@@ -381,4 +381,29 @@ class Empleado
 
         return $result;
     }
+
+    /**
+     * Genera un código automático basado en el nombre de la obra
+     *
+     * Crea un código corto extrayendo las primeras letras de cada palabra
+     * del nombre de la obra, en mayúsculas.
+     *
+     * @static
+     * @access public
+     * @param string $nombre_obra Nombre de la obra
+     * @return string Código generado (ej: "OP" para "Obra Peñascos")
+     */
+    public static function generarCodigoObra($nombre_obra)
+    {
+        $palabras = explode(' ', trim($nombre_obra));
+        $codigo = '';
+        
+        foreach ($palabras as $palabra) {
+            if (!empty($palabra)) {
+                $codigo .= strtoupper($palabra[0]);
+            }
+        }
+        
+        return $codigo ?: 'OBR';
+    }
 }
