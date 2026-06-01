@@ -226,6 +226,56 @@ class EmpleadoController
         readfile($ruta);
         exit;
     }
+
+    public static function getFiltered()
+    {
+        header('Content-Type: application/json');
+
+        $compania = $_GET['compania'] ?? '';
+        $obra = $_GET['obra'] ?? '';
+
+        $result = Empleado::getAll();
+        $empleados = [];
+
+        while ($row = $result->fetch_assoc()) {
+            if ($compania !== '' && $row['compania'] !== $compania) {
+                continue;
+            }
+            if ($obra !== '' && $row['nombre_obra'] !== $obra) {
+                continue;
+            }
+
+            $nombreObraDisplay = strlen($row['nombre_obra']) > 30
+                ? substr($row['nombre_obra'], 0, 30) . '...'
+                : $row['nombre_obra'];
+
+            $empleados[] = [
+                '',
+                $row['compania'],
+                mayusculas($row['nombre']),
+                $row['puesto'],
+                $row['telefono'],
+                $row['salario'],
+                $row['sdi'],
+                $row['estado_civil'],
+                $nombreObraDisplay . '|' . $row['nombre_obra'],
+                date("d/M/Y", strtotime($row['fecha_ingreso'])),
+                '<div class="wrapper">
+                    <div class="icon">
+                        <a class="icono bi bi-eye" href="show.php?id=' . $row['id'] . '"></a>
+                        <span class="tooltip">Detalle</span>
+                    </div>
+                    <div class="icon">
+                        <a class="icono bi bi-pencil-square" href="edit.php?id=' . $row['id'] . '"></a>
+                        <span class="tooltip">Editar</span>
+                    </div>
+                </div>'
+            ];
+        }
+
+        echo json_encode($empleados);
+        exit;
+    }
 }
 
 
@@ -258,4 +308,9 @@ if (isset($_GET['action']) && $_GET['action'] === 'descargarContrato') {
 /**************************************************************** */
 if (isset($_GET['action']) && $_GET['action'] === 'pdf') {
     EmpleadoController::generarContratoPDF();
+}
+
+/**************************************************************** */
+if (isset($_GET['action']) && $_GET['action'] === 'getFiltered') {
+    EmpleadoController::getFiltered();
 }

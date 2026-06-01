@@ -47,10 +47,8 @@ $obras = Empleado::getObras();
                     </option>
                 <?php endwhile; ?>
             </select>
-            
         </div>
     </div>
-
     <table id="tablaEmpleados" class="display" style="width:98%;">
 
         <thead>
@@ -115,7 +113,7 @@ $obras = Empleado::getObras();
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-  
+
     <script src="../../public/js/dataTable.js"></script>
 
 

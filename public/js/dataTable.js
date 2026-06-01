@@ -18,38 +18,67 @@ $(document).ready(function () {
         columnDefs: [{
             orderable: false,
             targets: 0
+        }, {
+            targets: 8,
+            render: function(data, type, row) {
+                if (type === 'display' && data.includes('|')) {
+                    var parts = data.split('|');
+                    return '<span title="' + parts[1] + '">' + parts[0] + '</span>';
+                }
+                return data;
+            }
         }],
         ordering:true,
         order: [[0, 'desc']],
         select: true
     });
 
-    $('#busqueda').on('keyup', function () {
-        table.search(this.value).draw();
+    function cargarDatos() {
+        var compania = $('#filtroCompania').val();
+        var obra = $('#filtroObra').val();
 
-    });
+        $.ajax({
+            url: '../../controllers/empleadoController.php',
+            type: 'GET',
+            data: {
+                action: 'getFiltered',
+                compania: compania,
+                obra: obra
+            },
+            dataType: 'json',
+            success: function(data) {
+                table.clear().rows.add(data).draw();
+                actualizarNumeros();
+            }
+        });
+    }
 
-    $('#filtroCompania').on('change', function () {
-        var valor = $(this).val();
-
-        table.column(1).search(valor).draw();
-    });
-
-    $('#filtroObra').on('change', function () {
-        var valor = $(this).val();
-
-        table.column(8).search(valor).draw();
-    });
-
-    table.on('order.dt search.dt draw.dt', function () {
+    function actualizarNumeros() {
         let pageInfo = table.page.info();
-
         table.column(0, {
             page: 'current'
         }).nodes().each(function (cell, i) {
             cell.innerHTML = i + 1 + pageInfo.start;
         });
-    }).draw();
+    }
+
+    $('#busqueda').on('keyup', function () {
+        table.search(this.value).draw();
+    });
+
+    $('#filtroCompania').on('change', function () {
+        cargarDatos();
+    });
+
+    $('#filtroObra').on('change', function () {
+        cargarDatos();
+    });
+
+    table.on('order.dt search.dt draw.dt', function () {
+        actualizarNumeros();
+    });
+
+    actualizarNumeros();
 
 });
 
