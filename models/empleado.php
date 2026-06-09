@@ -395,15 +395,23 @@ class Empleado
      */
     public static function generarCodigoObra($nombre_obra)
     {
-        $palabras = explode(' ', trim($nombre_obra));
-        $codigo = '';
-        
-        foreach ($palabras as $palabra) {
-            if (!empty($palabra)) {
-                $codigo .= strtoupper($palabra[0]);
-            }
-        }
-        
-        return $codigo ?: 'OBR';
+        $mapaObras = [
+
+            'INFONAVIT LOS PEÑASCOS, UBICADO EN AV. MELCHOR OCAMPO, TEPEJI DEL RÍO, C. P. 42855, HIDALGO'
+            => 'INF - PEÑASCOS',
+
+            'EDIFICACIÓN DESTINADO A LA EDIFICACIÓN DE 954  (NOVECIENTAS CINCUENTA Y CUATRO) VIVIENDAS EN EL PROYECTO PRELIMINAR POLÍGONO 1, UBICADO EN EL MUNICIPIO DE TEPEJI DEL RÍO DE OCAMPO, EN HIDALGO'
+            => 'EDIF - POLÍGONO 1',
+
+            'EDIFICACIÓN DESTINADO A LA EDIFICACIÓN DE 180 (CIENTO OCHENTA) VIVIENDAS EN EL PROYECTO PRELIMINAR POLÍGONO 3 UBICADO EN EL MUNICIPIO DE TEPEJI DEL RÍO DE OCAMPO, EN HIDALGO'
+            => 'EDIF - POLÍGONO 3',
+
+            'EDIFICACIÓN DESTINADO A LA EDIFICACIÓN DE 260 (DOSCIENTAS SESENTA) VIVIENDAS EN EL PROYECTO RESERVA 2 UBICADO EN EL MUNICIPIO DE TEPEJI DEL RÍO DE OCAMPO, EN HIDALGO'
+            => 'EDIF - RESERVA 2',
+
+        ];
+
+        return $mapaObras[$nombre_obra] ?? $nombre_obra; // Retorna el código mapeado o el nombre original si no hay mapeo
+
     }
 }

@@ -39,11 +39,11 @@ $obras = Empleado::getObras();
                 <?php endwhile; ?>
             </select>
 
-            <select id="filtroObra">
+             <select id="filtroObra">
                 <option value="">Todas las obras</option>
                 <?php while ($obr = $obras->fetch_assoc()): ?>
                     <option value="<?= $obr['nombre_obra'] ?>">
-                        <?= Empleado::generarCodigoObra($obr['nombre_obra']) ?> - <?= $obr['nombre_obra'] ?>
+                        <?= Empleado::generarCodigoObra($obr['nombre_obra']) ?>
                     </option>
                 <?php endwhile; ?>
             </select>
