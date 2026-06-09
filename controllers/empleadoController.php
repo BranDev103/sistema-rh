@@ -269,6 +269,11 @@ class EmpleadoController
                         <a class="icono bi bi-pencil-square" href="edit.php?id=' . $row['id'] . '"></a>
                         <span class="tooltip">Editar</span>
                     </div>
+
+                    <div class="icon">
+                        <a class="icono bi bi-trash" href="index.php?action=delete&id=' . $row['id'] . '" onclick="return confirm(\'¿Estás seguro de eliminar este empleado?\')"></a>
+                        <span class="tooltip">Eliminar</span>
+                    
                 </div>'
             ];
         }

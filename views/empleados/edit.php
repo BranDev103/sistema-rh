@@ -31,18 +31,19 @@ $empleado = Empleado::getById($_GET['id']);
             <option value="">Seleccione</option>
             <option value="ABAD" <?php if ($empleado['compania'] == "ABAD") echo "selected"; ?>>ABAD</option>
             <option value="CALIHUA" <?php if ($empleado['compania'] == "CALIHUA") echo "selected"; ?>>CALIHUA</option>
-            <option value="GONZALEZ" <?php if ($empleado['compania'] == "GONZALEZ") echo "selected"; ?>>GONZALEZ</option>
-            <option value="ROMAN" <?php if ($empleado['compania'] == "ROMAN") echo "selected"; ?>>ROMAN</option>
-            <option value="ERNESTO" <?php if ($empleado['compania'] == "ERNESTO") echo "selected"; ?>>ERNESTO</option>
-            <option value="PEREZ" <?php if ($empleado['compania'] == "PEREZ") echo "selected"; ?>>PEREZ</option>
-            <option value="GARNICA" <?php if ($empleado['compania'] == "GARNICA") echo "selected"; ?>>GARNICA</option>
             <option value="CAMARGO" <?php if ($empleado['compania'] == "CAMARGO") echo "selected"; ?>>CAMARGO</option>
-            <option value="ROBERTO" <?php if ($empleado['compania'] == "ROBERTO") echo "selected"; ?>>ROBERTO</option>
-            <option value="TOPOGRAFIA" <?php if ($empleado['compania'] == "TOPOGRAFIA") echo "selected"; ?>>TOPOGRAFIA</option>
-            <option value="HILDA-GUSTAVO" <?php if ($empleado['compania'] == "HILDA-GUSTAVO") echo "selected"; ?>>HILDA-GUSTAVO</option>
-            <option value="TAYDE" <?php if ($empleado['compania'] == "TAYDE") echo "selected"; ?>>TAYDE</option>
             <option value="DAZNA SEMANAL" <?php if ($empleado['compania'] == "DAZNA SEMANA") echo "selected"; ?>>DAZNA SEMANAL</option>
             <option value="DAZNA QUINCENAL" <?php if ($empleado['compania'] == "DAZNA QUINCENAL") echo "selected"; ?>>DAZNA QUINCENAL</option>
+            <option value="ERNESTO" <?php if ($empleado['compania'] == "ERNESTO") echo "selected"; ?>>ERNESTO</option>
+            <option value="GARNICA" <?php if ($empleado['compania'] == "GARNICA") echo "selected"; ?>>GARNICA</option>
+            <option value="GONZALEZ" <?php if ($empleado['compania'] == "GONZALEZ") echo "selected"; ?>>GONZALEZ</option>
+            <option value="HILDA-GUSTAVO" <?php if ($empleado['compania'] == "HILDA-GUSTAVO") echo "selected"; ?>>HILDA-GUSTAVO</option>
+            <option value="JESUS" <?php if ($empleado['compania'] == "JESUS") echo "selected"; ?>>JESUS</option>
+            <option value="ROMAN" <?php if ($empleado['compania'] == "ROMAN") echo "selected"; ?>>ROMAN</option>
+            <option value="PEREZ" <?php if ($empleado['compania'] == "PEREZ") echo "selected"; ?>>PEREZ</option>
+            <option value="ROBERTO" <?php if ($empleado['compania'] == "ROBERTO") echo "selected"; ?>>ROBERTO</option>
+            <option value="TAYDE" <?php if ($empleado['compania'] == "TAYDE") echo "selected"; ?>>TAYDE</option>
+            <option value="TOPOGRAFIA" <?php if ($empleado['compania'] == "TOPOGRAFIA") echo "selected"; ?>>TOPOGRAFIA</option>
           </select>
         </div>
 
@@ -133,18 +134,19 @@ $empleado = Empleado::getById($_GET['id']);
           <label>Banco</label>
           <select required name="banco">
             <option value="">Seleccione</option>
-            <option value="BBVA" <?php if ($empleado['banco'] == "BBVA") echo "selected"; ?>>BBVA</option>
-            <option value="SANTANDER" <?php if ($empleado['banco'] == "SANTANDER") echo "selected"; ?>>SANTANDER</option>
-            <option value="BANORTE" <?php if ($empleado['banco'] == "BANORTE") echo "selected"; ?>>BANORTE</option>
             <option value="AZTECA" <?php if ($empleado['banco'] == "AZTECA") echo "selected"; ?>>AZTECA</option>
             <option value="BANAMEX" <?php if ($empleado['banco'] == "BANAMEX") echo "selected"; ?>>BANAMEX</option>
-            <option value="HSBC" <?php if ($empleado['banco'] == "HSBC") echo "selected"; ?>>HSBC</option>
-            <option value="SCOTIABANK" <?php if ($empleado['banco'] == "SCOTIABANK") echo "selected"; ?>>SCOTIABANK</option>
-            <option value="INBURSA" <?php if ($empleado['banco'] == "INBURSA") echo "selected"; ?>>INBURSA</option>
+            <option value="BANORTE" <?php if ($empleado['banco'] == "BANORTE") echo "selected"; ?>>BANORTE</option>
             <option value="BANCOPPEL" <?php if ($empleado['banco'] == "BANCOPPEL") echo "selected"; ?>>BANCOPPEL</option>
             <option value="BANREGIO" <?php if ($empleado['banco'] == "BANREGIO") echo "selected"; ?>>BANREGIO</option>
             <option value="BANJERCITO" <?php if ($empleado['banco'] == "BANJERCITO") echo "selected"; ?>>BANJERCITO</option>
+            <option value="BAJIO" <?php if ($empleado['banco'] == "BAJIO") echo "selected"; ?>>BAJIO</option>
+            <option value="BBVA" <?php if ($empleado['banco'] == "BBVA") echo "selected"; ?>>BBVA</option>
             <option value="CHEQUE" <?php if ($empleado['banco'] == "CHEQUE") echo "selected"; ?>>CHEQUE</option>
+            <option value="HSBC" <?php if ($empleado['banco'] == "HSBC") echo "selected"; ?>>HSBC</option>
+            <option value="INBURSA" <?php if ($empleado['banco'] == "INBURSA") echo "selected"; ?>>INBURSA</option>
+            <option value="SANTANDER" <?php if ($empleado['banco'] == "SANTANDER") echo "selected"; ?>>SANTANDER</option>
+            <option value="SCOTIABANK" <?php if ($empleado['banco'] == "SCOTIABANK") echo "selected"; ?>>SCOTIABANK</option>
           </select>
         </div>
 
@@ -158,22 +160,29 @@ $empleado = Empleado::getById($_GET['id']);
             <option value="ALMACENISTA" <?php if ($empleado['puesto'] == "ALMACENISTA") echo "selected"; ?>>ALMACENISTA</option>
             <option value="AYUDANTE DE ALMACÉN" <?php if ($empleado['puesto'] == "AYUDANTE DE ALMACÉN") echo "selected"; ?>>AYUDANTE DE ALMACÉN</option>
             <option value="AUXILIAR DE TOPOGRAFIA" <?php if ($empleado['puesto'] == "AUXILIAR DE TOPOGRAFIA") echo "selected"; ?>>AUXILIAR DE TOPOGRAFIA</option>
+            <option value="AUXILIAR DE RECURSOS HUMANOS" <?php if ($empleado['puesto'] == "AUXILIAR DE RECURSOS HUMANOS") echo "selected"; ?>>AUXILIAR DE RECURSOS HUMANOS</option>
             <option value="AUXILIAR DE SEGURIDAD" <?php if ($empleado['puesto'] == "AUXILIAR DE SEGURIDAD") echo "selected"; ?>>AUXILIAR DE SEGURIDAD</option>
+            <option value="BODEGUERO" <?php if ($empleado['puesto'] == "BODEGUERO") echo "selected"; ?>>BODEGUERO</option>
             <option value="CARPINTERO" <?php if ($empleado['puesto'] == "CARPINTERO") echo "selected"; ?>>CARPINTERO</option>
             <option value="CADENERO" <?php if ($empleado['puesto'] == "CADENERO") echo "selected"; ?>>CADENERO</option>
             <option value="CONTROL DE OBRA" <?php if ($empleado['puesto'] == "CONTROL DEOBRA") echo "selected"; ?>>CONTROL DE OBRA</option>
             <option value="COORDINADOR DE SEGURIDAD E HIGIENE" <?php if ($empleado['puesto'] == "COORDINADOR DE SEGURIDAD E HIGIENE") echo "selected"; ?>>COORDINADOR DE SEGURIDAD E HIGIENE</option>
             <option value="COORDINADOR DE OBRA" <?php if ($empleado['puesto'] == "COORDINADOR DE OBRA") echo "selected"; ?>>COORDINADOR DE OBRA</option>
             <option value="ELÉCTRICO" <?php if ($empleado['puesto'] == "ELÉCTRICO") echo "selected"; ?>>ELÉCTRICO</option>
+            <option value="ESTIMACIONES" <?php if ($empleado['puesto'] == "ESTIMACIONES") echo "selected"; ?>>ESTIMACIONES</option>
             <option value="FIERRERO" <?php if ($empleado['puesto'] == "FIERRERO") echo "selected"; ?>>FIERRERO</option>
+            <option value="INGENIERO ELÉCTRICO" <?php if ($empleado['puesto'] == "INGENIERO ELÉCTRICO") echo "selected"; ?>>INGENIERO ELÉCTRICO</option>
             <option value="LIMPIEZA" <?php if ($empleado['puesto'] == "LIMPIEZA") echo "selected"; ?>>LIMPIEZA</option>
             <option value="OPERADOR MAQUINARIA" <?php if ($empleado['puesto'] == "OPERADOR MAQUINARIA") echo "selected"; ?>>OPERADOR MAQUINARIA</option>
             <option value="OPERADOR PIPA" <?php if ($empleado['puesto'] == "OPERADOR PIPA") echo "selected"; ?>>OPERADOR PIPA</option>
-            <option value="PLOMERO" <?php if ($empleado['puesto'] == "PLOMERO"); ?>>PLOMERO</option>
-            <option value="RESIDENTE" <?php if ($empleado['puesto'] == "RESIDENTE") echo "selected"; ?>>RESIDENTE</option>
+            <option value="PLOMERO" <?php if ($empleado['puesto'] == "PLOMERO") echo "selected"; ?>>PLOMERO</option>
+            <option value="RESIDENTE DE OBRA" <?php if ($empleado['puesto'] == "RESIDENTE DE OBRA") echo "selected"; ?>>RESIDENTE DE OBRA</option>
+            <option value="SUPERINTENDENTE" <?php if ($empleado['puesto'] == "SUPERINTENDENTE") echo "selected"; ?>>SUPERINTENDENTE</option>
+            <option value="SUPERVISOR DE SEGURIDAD E HIGIENE" <?php if ($empleado['puesto'] == "SUPERVISOR DE SEGURIDAD E HIGIENE") echo "selected"; ?>>SUPERVISOR DE SEGURIDAD E HIGIENE</option>
             <option value="TABIQUERO" <?php if ($empleado['puesto'] == "TABIQUERO") echo "selected"; ?>>TABIQUERO</option>
             <option value="TAYDE" <?php if ($empleado['puesto'] == "TAYDE") echo "selected"; ?>>TAYDE</option>
             <option value="TOPOGRAFO" <?php if ($empleado['puesto'] == "TOPOGRAFO") echo "selected"; ?>>TOPOGRAFO</option>
+            <option value="VELADOR" <?php if ($empleado['puesto'] == "VELADOR") echo "selected"; ?>>VELADOR</option>
           </select>
         </div>
 
@@ -200,13 +209,6 @@ $empleado = Empleado::getById($_GET['id']);
           <label>SDI</label>
           <input type="number" step="0.01" name="sdi" value="<?= $empleado['sdi']; ?>" required>
         </div>
-
-        <!--
-        <div class="form-group">
-          <label>Salario en letra</label>
-          <input type="text" name="salario_letra" value="<?= $empleado['sdi']; ?>" required>
-        </div>
--->
 
         <div class="form-group">
           <label>Estado civil</label>
@@ -245,7 +247,7 @@ $empleado = Empleado::getById($_GET['id']);
           <label>Estado</label>
           <select name="estado" required>
             <option value="">Seleccione</option>
-            value="Aguascalientes" <?php if ($empleado['estado_nacimiento'] == "Aguascalientes") echo "selected"; ?>>Aguascalientes</option>
+            <option value="Aguascalientes" <?php if ($empleado['estado_nacimiento'] == "Aguascalientes") echo "selected"; ?>>Aguascalientes</option>
             <option value="Baja California" <?php if ($empleado['estado_nacimiento'] == "Baja California") echo "selected"; ?>>Baja California</option>
             <option value="Baja California Sur" <?php if ($empleado['estado_nacimiento'] == "Baja California Sur") echo "selected"; ?>>Baja California Sur</option>
             <option value="Campeche" <?php if ($empleado['estado_nacimiento'] == "Campeche") echo "selected"; ?>>Campeche</option>
@@ -289,10 +291,10 @@ $empleado = Empleado::getById($_GET['id']);
           <label>Nombre de obra</label>
           <select name="nombre_obra" required>
             <option value="">Seleccione</option>
-            <option value="EDIFICACIÓN DESTINADO A LA EDIFICACIÓN DE 954 (NOVECIENTAS CINCUENTA Y CUATRO) VIVIENDAS EN EL PROYECTO PRELIMINAR POLÍGONO 1, UBICADO EN EL MUNICIPIO DE TEPEJI DEL RÍO DE OCAMPO, EN HIDALGO" <?php if ($empleado['nombre_obra'] == "EDIFICACIÓN DESTINADO A LA EDIFICACIÓN DE 954 (NOVECIENTAS CINCUENTA Y CUATRO) VIVIENDAS EN EL PROYECTO PRELIMINAR POLÍGONO 1, UBICADO EN EL MUNICIPIO DE TEPEJI DEL RÍO DE OCAMPO, EN HIDALGO") echo "selected"; ?>>EDIFICACIÓN DESTINADO A LA EDIFICACIÓN DE 954 (NOVECIENTAS CINCUENTA Y CUATRO) VIVIENDAS EN EL PROYECTO PRELIMINAR POLÍGONO 1, UBICADO EN EL MUNICIPIO DE TEPEJI DEL RÍO DE OCAMPO, EN HIDALGO</option>
-            <option value="EDIFICACIÓN DESTINADO A LA EDIFICACIÓN DE 180 (CIENTO OCHENTA) VIVIENDAS EN EL PROYECTO PRELIMINAR POLÍGONO 3, UBICADO EN EL MUNICIPIO DE TEPEJI DEL RÍO DE OCAMPO, EN HIDALGO" <?php if ($empleado['nombre_obra'] == "EDIFICACIÓN DESTINADO A LA EDIFICACIÓN DE 180 (CIENTO OCHENTA) VIVIENDAS EN EL PROYECTO PRELIMINAR POLÍGONO 3, UBICADO EN EL MUNICIPIO DE TEPEJI DEL RÍO DE OCAMPO, EN HIDALGO") echo "selected"; ?>>EDIFICACIÓN DESTINADO A LA EDIFICACIÓN DE 180 (CIENTO OCHENTA) VIVIENDAS EN EL PROYECTO PRELIMINAR POLÍGONO 3, UBICADO EN EL MUNICIPIO DE TEPEJI DEL RÍO DE OCAMPO, EN HIDALGO</option>
-            <option value="EDIFICACIÓN DESTINADO A LA EDIFICACIÓN DE 260 (DOSCIENTAS SESENTA) VIVIENDAS EN EL PROYECTO RESERVA 2, UBICADO EN EL MUNICIPIO DE TEPEJI DEL RÍO DE OCAMPO, EN HIDALGO" <?php if ($empleado['nombre_obra'] == "EDIFICACIÓN DESTINADO A LA EDIFICACIÓN DE 260 (DOSCIENTAS SESENTA) VIVIENDAS EN EL PROYECTO RESERVA 2, UBICADO EN EL MUNICIPIO DE TEPEJI DEL RÍO DE OCAMPO, EN HIDALGO") echo "selected"; ?>>EDIFICACIÓN DESTINADO A LA EDIFICACIÓN DE 260 (DOSCIENTAS SESENTA) VIVIENDAS EN EL PROYECTO RESERVA 2, UBICADO EN EL MUNICIPIO DE TEPEJI DEL RÍO DE OCAMPO, EN HIDALGO</option>
-            <option value="INFONAVIT LOS PEÑASCOS, UBICADO EN AV. MELCHOR OCAMPO, TEPEJI DEL RÍO, C. P. 42855, HIDALGO" <?php if ($empleado['nombre_obra'] == "INFONAVIT LOS PEÑASCOS, UBICADO EN AV. MELCHOR OCAMPO, TEPEJI DEL RÍO, C. P. 42855, HIDALGO") echo "selected"; ?>>INFONAVIT LOS PEÑASCOS, UBICADO EN AV. MELCHOR OCAMPO, TEPEJI DEL RÍO, C. P. 42855, HIDALGO</option>
+            <option value="EDIFICACIÓN DESTINADO A LA EDIFICACIÓN DE 954 (NOVECIENTAS CINCUENTA Y CUATRO) VIVIENDAS EN EL PROYECTO PRELIMINAR POLÍGONO 1, UBICADO EN EL MUNICIPIO DE TEPEJI DEL RÍO DE OCAMPO, EN HIDALGO" <?php if ($empleado['nombre_obra'] === "EDIFICACIÓN DESTINADO A LA EDIFICACIÓN DE 954 (NOVECIENTAS CINCUENTA Y CUATRO) VIVIENDAS EN EL PROYECTO PRELIMINAR POLÍGONO 1, UBICADO EN EL MUNICIPIO DE TEPEJI DEL RÍO DE OCAMPO, EN HIDALGO") echo "selected"; ?>>EDIFICACIÓN DESTINADO A LA EDIFICACIÓN DE 954 (NOVECIENTAS CINCUENTA Y CUATRO) VIVIENDAS EN EL PROYECTO PRELIMINAR POLÍGONO 1, UBICADO EN EL MUNICIPIO DE TEPEJI DEL RÍO DE OCAMPO, EN HIDALGO</option>
+            <option value="EDIFICACIÓN DESTINADO A LA EDIFICACIÓN DE 180 (CIENTO OCHENTA) VIVIENDAS EN EL PROYECTO PRELIMINAR POLÍGONO 3, UBICADO EN EL MUNICIPIO DE TEPEJI DEL RÍO DE OCAMPO, EN HIDALGO" <?php if ($empleado['nombre_obra'] === "EDIFICACIÓN DESTINADO A LA EDIFICACIÓN DE 180 (CIENTO OCHENTA) VIVIENDAS EN EL PROYECTO PRELIMINAR POLÍGONO 3, UBICADO EN EL MUNICIPIO DE TEPEJI DEL RÍO DE OCAMPO, EN HIDALGO") echo "selected"; ?>>EDIFICACIÓN DESTINADO A LA EDIFICACIÓN DE 180 (CIENTO OCHENTA) VIVIENDAS EN EL PROYECTO PRELIMINAR POLÍGONO 3, UBICADO EN EL MUNICIPIO DE TEPEJI DEL RÍO DE OCAMPO, EN HIDALGO</option>
+            <option value="EDIFICACIÓN DESTINADO A LA EDIFICACIÓN DE 260 (DOSCIENTAS SESENTA) VIVIENDAS EN EL PROYECTO RESERVA 2, UBICADO EN EL MUNICIPIO DE TEPEJI DEL RÍO DE OCAMPO, EN HIDALGO" <?php if ($empleado['nombre_obra'] === "EDIFICACIÓN DESTINADO A LA EDIFICACIÓN DE 260 (DOSCIENTAS SESENTA) VIVIENDAS EN EL PROYECTO RESERVA 2, UBICADO EN EL MUNICIPIO DE TEPEJI DEL RÍO DE OCAMPO, EN HIDALGO") echo "selected"; ?>>EDIFICACIÓN DESTINADO A LA EDIFICACIÓN DE 260 (DOSCIENTAS SESENTA) VIVIENDAS EN EL PROYECTO RESERVA 2, UBICADO EN EL MUNICIPIO DE TEPEJI DEL RÍO DE OCAMPO, EN HIDALGO</option>
+            <option value="INFONAVIT LOS PEÑASCOS, UBICADO EN AV. MELCHOR OCAMPO, TEPEJI DEL RÍO, C. P. 42855, HIDALGO" <?php if ($empleado['nombre_obra'] === "INFONAVIT LOS PEÑASCOS, UBICADO EN AV. MELCHOR OCAMPO, TEPEJI DEL RÍO, C. P. 42855, HIDALGO") echo "selected"; ?>>INFONAVIT LOS PEÑASCOS, UBICADO EN AV. MELCHOR OCAMPO, TEPEJI DEL RÍO, C. P. 42855, HIDALGO</option>
           </select>
         </div>
 

@@ -31,18 +31,19 @@ verificarSesion();
                         <option value="">Seleccione</option>
                         <option value="ABAD">ABAD</option>
                         <option value="CALIHUA">CALIHUA</option>
-                        <option value="GONZALEZ">GONZALEZ</option>
-                        <option value="ROMAN">ROMAN</option>
-                        <option value="ERNESTO">ERNESTO</option>
-                        <option value="PEREZ">PEREZ</option>
-                        <option value="GARNICA">GARNICA</option>
                         <option value="CAMARGO">CAMARGO</option>
-                        <option value="ROBERTO">ROBERTO</option>
-                        <option value="TOPOGRAFIA">TOPOGRAFIA</option>
-                        <option value="HILDA-GUSTAVO">HILDA-GUSTAVO</option>
-                        <option value="TAYDE">TAYDE</option>
                         <option value="DAZNA SEMANAL">DAZNA SEMANAL</option>
                         <option value="DAZNA QUINCENAL">DAZNA QUINCENAL</option>
+                        <option value="ERNESTO">ERNESTO</option>
+                        <option value="GARNICA">GARNICA</option>
+                        <option value="GONZALEZ">GONZALEZ</option>
+                        <option value="HILDA-GUSTAVO">HILDA-GUSTAVO</option>
+                        <option value="JESUS">JESUS</option>
+                        <option value="ROMAN">ROMAN</option>
+                        <option value="PEREZ">PEREZ</option>
+                        <option value="ROBERTO">ROBERTO</option>
+                        <option value="TAYDE">TAYDE</option>
+                        <option value="TOPOGRAFIA">TOPOGRAFIA</option>
                     </select>
                 </div>
 
@@ -61,22 +62,29 @@ verificarSesion();
                         <option value="ALMACENISTA">ALMACENISTA</option>
                         <option value="AYUDANTE DE ALMACÉN">AYUDANTE DE ALMACÉN</option>
                         <option value="AUXILIAR DE TOPOGRAFIA">AUXILIAR DE TOPOGRAFIA</option>
+                        <option value="AUXILIAR DE RECURSOS HUMANOS">AUXILIAR DE RECURSOS HUMANOS</option>
                         <option value="AUXILIAR DE SEGURIDAD">AUXILIAR DE SEGURIDAD</option>
+                        <option value="BODEGUERO">BODEGUERO</option>
                         <option value="CARPINTERO">CARPINTERO</option>
                         <option value="CADENERO">CADENERO</option>
                         <option value="CONTROL DE OBRA">CONTROL DE OBRA</option>
                         <option value="COORDINADOR DE SEGURIDAD E HIGIENE">COORDINADOR DE SEGURIDAD E HIGIENE</option>
                         <option value="COORDINADOR DE OBRA">COORDINADOR DE OBRA</option>
                         <option value="ELÉCTRICO">ELÉCTRICO</option>
+                        <option value="ESTIMACIONES">ESTIMACIONES</option>
                         <option value="FIERRERO">FIERRERO</option>
+                        <option value="INGENIERO ELÉCTRICO">INGENIERO ELÉCTRICO</option>
                         <option value="LIMPIEZA">LIMPIEZA</option>
                         <option value="OPERADOR MAQUINARIA">OPERADOR MAQUINARIA</option>
                         <option value="OPERADOR PIPA">OPERADOR PIPA</option>
                         <option value="PLOMERO">PLOMERO</option>
-                        <option value="RESIDENTE">RESIDENTE</option>
+                        <option value="RESIDENTE DE OBRA">RESIDENTE DE OBRA</option>
+                        <option value="SUPERINTENDENTE">SUPERINTENDENTE</option>
+                        <option value="SUPERVISOR DE SEGURIDAD E HIGIENE">SUPERVISOR DE SEGURIDAD E HIGIENE</option>
                         <option value="TABIQUERO">TABIQUERO</option>
                         <option value="TAYDE">TAYDE</option>
                         <option value="TOPOGRAFO">TOPOGRAFO</option>
+                        <option value="VELADOR">VELADOR</option>
                     </select>
                 </div>
 
@@ -162,18 +170,19 @@ verificarSesion();
                     <label>Banco</label>
                     <select required name="banco">
                         <option value="">Seleccione</option>
-                        <option value="BBVA">BBVA</option>
-                        <option value="SANTANDER">SANTANDER</option>
-                        <option value="BANORTE">BANORTE</option>
                         <option value="AZTECA">AZTECA</option>
                         <option value="BANAMEX">BANAMEX</option>
-                        <option value="HSBC">HSBC</option>
-                        <option value="SCOTIABANK">SCOTIABANK</option>
-                        <option value="INBURSA">INBURSA</option>
+                        <option value="BANORTE">BANORTE</option>
                         <option value="BANCOPPEL">BANCOPPEL</option>
                         <option value="BANREGIO">BANREGIO</option>
                         <option value="BANJERCITO">BANJERCITO</option>
+                        <option value="BAJIO">BAJIO</option>
+                        <option value="BBVA">BBVA</option>
                         <option value="CHEQUE">CHEQUE</option>
+                        <option value="HSBC">HSBC</option>
+                        <option value="INBURSA">INBURSA</option>
+                        <option value="SANTANDER">SANTANDER</option>
+                        <option value="SCOTIABANK">SCOTIABANK</option>
                     </select>
                 </div>
 
@@ -201,12 +210,6 @@ verificarSesion();
                     <input type="number" step="0.01" name="sdi" required>
                 </div>
 
-                <!--
-                <div class="form-group">
-                    <label>Salario en letra</label>
-                    <input type="text" name="salario_letra" required>
-                </div>
--->
                 <div class="form-group">
                     <label>Estado civil</label>
                     <select name="estado_civil" required>
@@ -288,7 +291,7 @@ verificarSesion();
                     <label>Nombre de obra</label>
                     <select name="nombre_obra" required>
                         <option value="">Seleccione</option>
-                        <option value="EDIFICACIÓN DESTINADO A LA EDIFICACIÓN DE 954 (NOVECIENTAS CINCUENTA Y CUATRO) VIVIENDAS EN EL PROYECTO PRELIMINAR POLÍGONO 1, UBICADO EN EL MUNICIPIO DE TEPEJI DEL RÍO DE OCAMPO, EN HIDALGO">EDIFICACIÓN DESTINADO A LA EDIFICACIÓN DE 954 (NOVECIENTAS CINCUENTA Y CUATRO) VIVIENDAS EN EL PROYECTO PRELIMINAR POLÍGONO 1, UBICADO EN EL MUNICIPIO DE TEPEJI DEL RÍO DE OCAMPO, EN HIDALGO </option>
+                        <option value="EDIFICACIÓN DESTINADO A LA EDIFICACIÓN DE 954 (NOVECIENTAS CINCUENTA Y CUATRO) VIVIENDAS EN EL PROYECTO PRELIMINAR POLÍGONO 1, UBICADO EN EL MUNICIPIO DE TEPEJI DEL RÍO DE OCAMPO, EN HIDALGO">EDIFICACIÓN DESTINADO A LA EDIFICACIÓN DE 954 (NOVECIENTAS CINCUENTA Y CUATRO) VIVIENDAS EN EL PROYECTO PRELIMINAR POLÍGONO 1, UBICADO EN EL MUNICIPIO DE TEPEJI DEL RÍO DE OCAMPO, EN HIDALGO</option>
                         <option value="EDIFICACIÓN DESTINADO A LA EDIFICACIÓN DE 180 (CIENTO OCHENTA) VIVIENDAS EN EL PROYECTO PRELIMINAR POLÍGONO 3, UBICADO EN EL MUNICIPIO DE TEPEJI DEL RÍO DE OCAMPO, EN HIDALGO">EDIFICACIÓN DESTINADO A LA EDIFICACIÓN DE 180 (CIENTO OCHENTA) VIVIENDAS EN EL PROYECTO PRELIMINAR POLÍGONO 3, UBICADO EN EL MUNICIPIO DE TEPEJI DEL RÍO DE OCAMPO, EN HIDALGO</option>
                         <option value="EDIFICACIÓN DESTINADO A LA EDIFICACIÓN DE 260 (DOSCIENTAS SESENTA) VIVIENDAS EN EL PROYECTO RESERVA 2, UBICADO EN EL MUNICIPIO DE TEPEJI DEL RÍO DE OCAMPO, EN HIDALGO">EDIFICACIÓN DESTINADO A LA EDIFICACIÓN DE 260 (DOSCIENTAS SESENTA) VIVIENDAS EN EL PROYECTO RESERVA 2, UBICADO EN EL MUNICIPIO DE TEPEJI DEL RÍO DE OCAMPO, EN HIDALGO</option>
                         <option value="INFONAVIT LOS PEÑASCOS, UBICADO EN AV. MELCHOR OCAMPO, TEPEJI DEL RÍO, C. P. 42855, HIDALGO">INFONAVIT LOS PEÑASCOS, UBICADO EN AV. MELCHOR OCAMPO, TEPEJI DEL RÍO, C. P. 42855, HIDALGO</option>
