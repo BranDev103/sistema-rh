@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     var table = $('#tablaEmpleados').DataTable({
-        pageLength: 15,
+        pageLength: 30,
         searching: true,
         scrollX: false,
         autoWidth: false,

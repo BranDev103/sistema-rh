@@ -43,7 +43,7 @@ $obras = Empleado::getObras();
                 <option value="">Todas las obras</option>
                 <?php while ($obr = $obras->fetch_assoc()): ?>
                     <option value="<?= $obr['nombre_obra'] ?>">
-                        <?= Empleado::generarCodigoObra($obr['nombre_obra']) ?>
+                        <?= Empleado::codigoObra($obr['nombre_obra']) ?>
                     </option>
                 <?php endwhile; ?>
             </select>

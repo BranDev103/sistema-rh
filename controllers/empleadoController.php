@@ -3,13 +3,10 @@ require_once __DIR__ . '/../models/empleado.php';
 require_once __DIR__ . '/../helpers/funciones.php';
 require_once __DIR__ . '/../helpers/contrato.php';
 require_once __DIR__ . '/../helpers/auth.php';
-require_once __DIR__ . '/../helpers/stylespdf/contrato.php';
 
 
 class EmpleadoController
 {
-
-
     public static function store()
     {
         $total = Empleado::contarActivos();
@@ -116,9 +113,6 @@ class EmpleadoController
         header("Location: ../views/empleados/show.php?id=" . $_POST['id'] . "&updated=1");
         exit;
     }
-
-
-
 
     public static function delete()
     {
@@ -227,6 +221,13 @@ class EmpleadoController
         exit;
     }
 
+    /**
+     * Obtiene empleados filtrados por compañía y obra, y devuelve los datos en formato JSON para ser consumidos por DataTables en el frontend.
+     * Recibe los parámetros de filtro a través de la URL (GET) y realiza la consulta a la base de datos para obtener los empleados que coinciden con los criterios. Luego, formatea los datos en un array y los devuelve como JSON.
+     * Este método es utilizado para actualizar dinámicamente la tabla de empleados en la vista index.php cuando se aplican filtros de compañía y obra, permitiendo una experiencia de usuario más fluida sin necesidad de recargar toda la página.
+     * 
+     */
+
     public static function getFiltered()
     {
         header('Content-Type: application/json');
@@ -269,11 +270,11 @@ class EmpleadoController
                         <a class="icono bi bi-pencil-square" href="edit.php?id=' . $row['id'] . '"></a>
                         <span class="tooltip">Editar</span>
                     </div>
-
                     <div class="icon">
+                    <?php if (esAdmin()): ?>
                         <a class="icono bi bi-trash" href="index.php?action=delete&id=' . $row['id'] . '" onclick="return confirm(\'¿Estás seguro de eliminar este empleado?\')"></a>
                         <span class="tooltip">Eliminar</span>
-                    
+                    <?php endif; ?>
                 </div>'
             ];
         }

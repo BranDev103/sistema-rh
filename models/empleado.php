@@ -393,7 +393,7 @@ class Empleado
      * @param string $nombre_obra Nombre de la obra
      * @return string Código generado (ej: "OP" para "Obra Peñascos")
      */
-    public static function generarCodigoObra($nombre_obra)
+    public static function codigoObra($nombre_obra)
     {
         $mapaObras = [
 
