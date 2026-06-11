@@ -2,6 +2,10 @@
 
 /**
  * Controlador para la autenticación de usuarios.
+ * Este controlador maneja el proceso de inicio de sesión, verificando las credenciales del usuario y estableciendo la sesión correspondiente.
+ * @author BranDev10
+ * @version 1.0
+ * @since 11-04-2026
 */
 require_once __DIR__ . '/../config/conexion.php';
 
